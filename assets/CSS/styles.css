@@ -20,6 +20,7 @@ header {
     align-items: center;
     background-color: red;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 69px;
 }
 
 header h1 {
@@ -34,17 +35,16 @@ main h2{
     font-weight: 700;
     font-size: 20px;
     color: #000000;
-    margin-bottom: 12px;
 }
 
-.container-usuario{
+.container-usuario-vazio{
     display: flex;
     flex-direction: column;
     width: 1051px;
     min-height: 181px;
 }
 
-.container-usuario .titulo{
+.container-usuario-vazio .titulo{
     width: 169px;
     height: 30px;
     display: flex;
@@ -52,7 +52,7 @@ main h2{
     align-items: center;
 }
 /* Início do CSS do Quizz vazio*/
-.container-usuario .quizz-usuario-vazio{
+.container-usuario-vazio .quizz-usuario-vazio{
     width: 100%;
     height: 181px;
     display: flex;
@@ -63,7 +63,7 @@ main h2{
     margin: 77px 0px 77px 0px;
 }
 
-.container-usuario .quizz-usuario-vazio .vazio{
+.container-usuario-vazio .quizz-usuario-vazio .vazio{
     width: 250px;
     height: 181px;
     display: flex;
@@ -72,14 +72,14 @@ main h2{
     align-items: center;
 }
 
-.container-usuario .quizz-usuario-vazio .vazio p{
+.container-usuario-vazio .quizz-usuario-vazio .vazio p{
     font-weight: 400;
     font-size: 20px;
     color: #B9B9B9;
     text-align: center;
 }
 
-.container-usuario .quizz-usuario-vazio .vazio button{
+.container-usuario-vazio .quizz-usuario-vazio .vazio button{
     width: 151px;
     height: 40px;
     background: #FAFAFA;
@@ -87,16 +87,68 @@ main h2{
     border-radius: 50px;
 }
 
-.container-usuario .quizz-usuario-vazio .vazio button:hover{
+.container-usuario-vazio .quizz-usuario-vazio .vazio button:hover{
     cursor: pointer;
     opacity: 0.8;
 }
 /* Fim do CSS do Quizz vazio*/
 
+/* Início do CSS Quizz com conteúdo*/
+.info{
+    width: 169px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.info button{
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    color: #FFFFFF;
+    background: #EC362D;
+    border-radius: 500px;
+    border: none;
+}
+.container-usuario{
+    width: 1100px;
+    min-height: 181px;
+    max-height: 386px;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+}
+
+.container-usuario .quizz-usuario{
+    width: 340px;
+    height: 181px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-bottom: 12px;
+    margin-right: 15px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.container-usuario .quizz-usuario p{
+    font-weight: 400;
+    font-size: 19px;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0px 0px 10px 20px;
+}
+/* Fim do CSS Quizz com conteúdo*/
 /* Início do CSS do Quizz da comunidade*/
 .container-comunidade{
     width: 1100px;
     min-height: 181px;
+    max-height: 589px;
+    overflow-y: scroll;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
