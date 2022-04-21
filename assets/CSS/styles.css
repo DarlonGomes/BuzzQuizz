@@ -124,3 +124,10 @@ main h2{
 }
 
 /* Fim do CSS do Quizz da comunidade*/
+
+
+/* EFEITOS VISUAIS */
+
+.escondido {
+    display: none;
+}
