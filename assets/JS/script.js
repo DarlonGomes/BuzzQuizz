@@ -27,60 +27,60 @@ let descricaoNivel = "";
 
 
 //Botão para prosseguir para tela de criar Quizz
-function criarQuizz () {
-    document.querySelector(".tela1").classList.add("escondido");
-    document.querySelector(".tela3").classList.remove("escondido");
-    document.querySelector(".tela3-info-quizz").classList.remove("escondido");
+function criarQuizz() {
+    document.querySelector(".tela-um").classList.add("escondido");
+    document.querySelector(".tela-tres").classList.remove("escondido");
+    document.querySelector(".tela-tres-info-quizz").classList.remove("escondido");
 }
 
 //Botão da primeira página de criar quizz, prossegue de página para perguntas e computa os valores da página atual (tela 3.1)
-function prosseguirParaPerguntas () {
+function prosseguirParaPerguntas() {
     //pega os inputs
-    tituloQuizz = document.querySelector(".tela3-info-quizz .titulo-quizz").value;
-    urlImagemQuizz = document.querySelector(".tela3-info-quizz .url-imagem-quizz").value;
-    qntPerguntasQuizz = document.querySelector(".tela3-info-quizz .qnt-perguntas-quizz").value;
-    qntNiveisQuizz = document.querySelector(".tela3-info-quizz .qnt-niveis-quizz").value;
+    tituloQuizz = document.querySelector(".tela-tres-info-quizz .titulo-quizz").value;
+    urlImagemQuizz = document.querySelector(".tela-tres-info-quizz .url-imagem-quizz").value;
+    qntPerguntasQuizz = document.querySelector(".tela-tres-info-quizz .qnt-perguntas-quizz").value;
+    qntNiveisQuizz = document.querySelector(".tela-tres-info-quizz .qnt-niveis-quizz").value;
 
     //avança de página
-    document.querySelector(".tela3-info-quizz").classList.add("escondido");
-    document.querySelector(".tela3-perguntas-quizz").classList.remove("escondido");
+    document.querySelector(".tela-tres-info-quizz").classList.add("escondido");
+    document.querySelector(".tela-tres-perguntas-quizz").classList.remove("escondido");
 
     //verifica se as entradas são válida
 }
 
 //Botão da segunda página de criar quizz, prossegue de página para níveis e computa os valores (tela 3.2)
-function prosseguirParaNiveis () {
+function prosseguirParaNiveis() {
     //pega os inputs
-    perguntaTexto = document.querySelector(".tela3-perguntas-quizz .texto").value;
-    perguntaCorFundo = document.querySelector(".tela3-perguntas-quizz .cor-fundo").value;
-    respostaCorreta = document.querySelector(".tela3-perguntas-quizz .correta").value;
-    respostaCorretaUrl = document.querySelector(".tela3-perguntas-quizz .correta-url").value;
-    respostaIncorreta1 = document.querySelector(".tela3-perguntas-quizz .incorreta-1").value;
-    respostaIncorretaUrl1 = document.querySelector(".tela3-perguntas-quizz .incorreta-url-1").value;
-    respostaIncorreta2 = document.querySelector(".tela3-perguntas-quizz .incorreta-2").value;
-    respostaIncorretaUrl2 = document.querySelector(".tela3-perguntas-quizz .incorreta-url-2").value;
-    respostaIncorreta3 = document.querySelector(".tela3-perguntas-quizz .incorreta-3").value;
-    respostaIncorretaUrl3 = document.querySelector(".tela3-perguntas-quizz .incorreta-url-3").value;
+    perguntaTexto = document.querySelector(".tela-tres-perguntas-quizz .texto").value;
+    perguntaCorFundo = document.querySelector(".tela-tres-perguntas-quizz .cor-fundo").value;
+    respostaCorreta = document.querySelector(".tela-tres-perguntas-quizz .correta").value;
+    respostaCorretaUrl = document.querySelector(".tela-tres-perguntas-quizz .correta-url").value;
+    respostaIncorreta1 = document.querySelector(".tela-tres-perguntas-quizz .incorreta-1").value;
+    respostaIncorretaUrl1 = document.querySelector(".tela-tres-perguntas-quizz .incorreta-url-1").value;
+    respostaIncorreta2 = document.querySelector(".tela-tres-perguntas-quizz .incorreta-2").value;
+    respostaIncorretaUrl2 = document.querySelector(".tela-tres-perguntas-quizz .incorreta-url-2").value;
+    respostaIncorreta3 = document.querySelector(".tela-tres-perguntas-quizz .incorreta-3").value;
+    respostaIncorretaUrl3 = document.querySelector(".tela-tres-perguntas-quizz .incorreta-url-3").value;
 
 
     //avança de página
-    document.querySelector(".tela3-perguntas-quizz").classList.add("escondido");
-    document.querySelector(".tela3-niveis-quizz").classList.remove("escondido");
+    document.querySelector(".tela-tres-perguntas-quizz").classList.add("escondido");
+    document.querySelector(".tela-tres-niveis-quizz").classList.remove("escondido");
 
     //verifica se as entradas são válidas
 }
 
 //Botão da terceira página de criar quizz, prossegue de página para o quizz finalizado, computa os valores e envia o quizz para API (tela 3.3)
-function finalizarCriacaoQuizz () {
+function finalizarCriacaoQuizz() {
     //pega os inputs
-    tituloNivel = document.querySelector(".tela3-niveis-quizz .titulo-nivel").value;
-    porcentagemAcerto = document.querySelector(".tela3-niveis-quizz .porcentagem-acerto").value;
-    urlImagemNivel = document.querySelector(".tela3-niveis-quizz .url-imagem-nivel").value;
-    descricaoNivel = document.querySelector(".tela3-niveis-quizz .descricao-nivel").value;
+    tituloNivel = document.querySelector(".tela-tres-niveis-quizz .titulo-nivel").value;
+    porcentagemAcerto = document.querySelector(".tela-tres-niveis-quizz .porcentagem-acerto").value;
+    urlImagemNivel = document.querySelector(".tela-tres-niveis-quizz .url-imagem-nivel").value;
+    descricaoNivel = document.querySelector(".tela-tres-niveis-quizz .descricao-nivel").value;
 
     //avança de página
-    document.querySelector(".tela3-niveis-quizz").classList.add("escondido");
-    document.querySelector(".tela3-sucesso-quizz").classList.remove("escondido");
+    document.querySelector(".tela-tres-niveis-quizz").classList.add("escondido");
+    document.querySelector(".tela-tres-sucesso-quizz").classList.remove("escondido");
 
     //verifica se as entradas são válidas
 
@@ -88,16 +88,16 @@ function finalizarCriacaoQuizz () {
 }
 
 //Botão da primeira página de criar quizz. Prossegue de página e computa os valores (tela 3.4)
-function AcessarQuizz () {
+function AcessarQuizz() {
 
 }
 
 //Botão da primeira página de criar quizz. Prossegue de página e computa os valores (tela 3.4)
-function voltarHome () {
+function voltarHome() {
     //Volta para home
-    document.querySelector(".tela3-sucesso-quizz").classList.add("escondido");
-    document.querySelector(".tela3").classList.add("escondido");
-    document.querySelector(".tela1").classList.remove("escondido");
+    document.querySelector(".tela-tres-sucesso-quizz").classList.add("escondido");
+    document.querySelector(".tela-tres").classList.add("escondido");
+    document.querySelector(".tela-um").classList.remove("escondido");
 
     //Zera as variáveis de criação de quizz
     tituloQuizz = "";
