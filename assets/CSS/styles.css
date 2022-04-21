@@ -5,20 +5,116 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FAFAFA;
 }
 
 /* TOPO DA PAGINA */
 header {
     width: 100%;
-    height: 70px;
+    height: 69px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: red;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 header h1 {
     font-weight: 700;
     font-size: 37px;
-    color: white;
+    color: #FFFFFF;
+}
+
+main h2{
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+    margin-bottom: 12px;
+}
+
+.container-usuario{
+    display: flex;
+    flex-direction: column;
+    width: 1051px;
+    min-height: 181px;
+}
+
+.container-usuario .titulo{
+    width: 169px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-usuario .quizz-usuario-vazio{
+    width: 100%;
+    height: 181px;
+    display: flex;
+    justify-content: center;
+    background: #FAFAFA;
+    border: 1px dashed #D5D5D5;
+    border-radius: 5px;
+    margin: 77px 0px 77px 0px;
+}
+
+.container-usuario .quizz-usuario-vazio .vazio{
+    width: 250px;
+    height: 181px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.container-usuario .quizz-usuario-vazio .vazio p{
+    font-weight: 400;
+    font-size: 20px;
+    color: #B9B9B9;
+    text-align: center;
+}
+
+.container-usuario .quizz-usuario-vazio .vazio button{
+    width: 151px;
+    height: 40px;
+    background: #FAFAFA;
+    border: 1px dashed #EC362D;
+    border-radius: 50px;
+}
+
+.container-usuario .quizz-usuario-vazio .vazio button:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.container-comunidade{
+    width: 1100px;
+    min-height: 181px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.container-comunidade .quizz-comunidade{
+    width: 340px;
+    height: 181px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-bottom: 12px;
+    margin-right: 15px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container-comunidade .quizz-comunidade p{
+    font-weight: 400;
+    font-size: 19px;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0px 0px 10px 20px;
 }
