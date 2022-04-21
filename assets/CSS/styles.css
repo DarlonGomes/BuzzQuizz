@@ -20,7 +20,6 @@ header {
     align-items: center;
     background-color: red;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-bottom: 69px;
 }
 
 header h1 {
@@ -37,6 +36,13 @@ main h2{
     color: #000000;
 }
 
+.tela-dois {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Início - Tela Um*/
 .container-usuario-vazio{
     display: flex;
     flex-direction: column;
@@ -57,7 +63,7 @@ main h2{
     height: 181px;
     display: flex;
     justify-content: center;
-    background: #FAFAFA;
+    background-color: #FAFAFA;
     border: 1px dashed #D5D5D5;
     border-radius: 5px;
     margin: 77px 0px 77px 0px;
@@ -82,7 +88,7 @@ main h2{
 .container-usuario-vazio .quizz-usuario-vazio .vazio button{
     width: 151px;
     height: 40px;
-    background: #FAFAFA;
+    background-color: #FAFAFA;
     border: 1px dashed #EC362D;
     border-radius: 50px;
 }
@@ -94,26 +100,27 @@ main h2{
 /* Fim do CSS do Quizz vazio*/
 
 /* Início do CSS Quizz com conteúdo*/
-.info{
+.info-usuario{
     width: 169px;
     height: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 69px;
     margin-bottom: 12px;
 }
 
-.info button{
+.info-usuario button{
     width: 30px;
     height: 30px;
     font-size: 20px;
     color: #FFFFFF;
-    background: #EC362D;
+    background-color: #EC362D;
     border-radius: 500px;
     border: none;
 }
 
-.info button:hover{
+.info-usuario button:hover{
     cursor: pointer;
     opacity: 0.8;
 }
@@ -155,6 +162,16 @@ main h2{
 }
 /* Fim do CSS Quizz com conteúdo*/
 /* Início do CSS do Quizz da comunidade*/
+.info-comunidade{
+    width: 169px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 48px;
+    margin-bottom: 12px;
+}
+
 .container-comunidade{
     width: 1100px;
     min-height: 181px;
@@ -191,7 +208,83 @@ main h2{
 
 /* Fim do CSS do Quizz da comunidade*/
 
+/*Fim - Tela Um*/
 
+/* Início - Tela Dois*/
+.banner{
+    width: 100vw;
+    height: 227px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57));
+    margin-bottom: 42px;
+}
+
+.banner p{
+    font-size: 39px;
+    font-weight: 400;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.container-questao{
+    width: 759px;
+    height: 676px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 42px;
+}
+
+.container-questao .questao{
+    width: 688px;
+    height: 612px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.container-questao .questao .pergunta{
+    width: 688px;
+    height: 138px;
+    background-color: #434CA0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-questao .questao .pergunta p{
+    font-weight: 700;
+    font-size: 23px;
+    color: #FFFFFF;
+}
+
+.container-questao .questao .resposta{
+width: 323px;
+height: 217px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.container-questao .questao .resposta img{
+    width: 323px;
+    height: 175px;
+    object-fit: fill;
+    border-radius: 1px;
+}
+
+.container-questao .questao .resposta p{
+font-size: 20px;
+font-weight: 700;
+color: #000000;
+}
+/* Fim - Tela Dois*/
+
+/* Início - Tela Três */
+/* Fim - Tela Três */
 /* EFEITOS VISUAIS */
 
 .escondido {
