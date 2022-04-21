@@ -17,12 +17,12 @@
     <main>
         <div class="tela1">
             <div class="container-usuario">
-            <div class="quizz-usuario-vazio">
-                <div class="vazio">
-                <p>Você não criou nenhum quizz ainda :(</p>
-                <button>Criar Quizz</button>
+                <div class="quizz-usuario-vazio">
+                    <div class="vazio">
+                    <p>Você não criou nenhum quizz ainda :(</p>
+                    <button onclick="criarQuizz()">Criar Quizz</button>
+                    </div>
                 </div>
-            </div>
             </div>
             <h2>Todos os Quizzes</h2>
             <div class="container-comunidade">
@@ -64,7 +64,9 @@
                 </div>
             </div>
         </div>
-        <div class="tela2 escondido"></div>
+        <div class="tela2 escondido">
+
+        </div>
         <div class="tela3 escondido">
             <div class="tela3-info-quizz escondido">
                 <div class="info-quizz-topo"><p>Comece pelo Começo</p></div>
@@ -99,10 +101,25 @@
                 <button onclick="prosseguirParaNiveis()">Prosseguir pra criar níveis</button>
             </div>
             <div class="tela3-niveis-quizz escondido">
-
+                <div class="niveis-quizz-topo"><p>Agora, decida os níveis!</p></div>
+                <div class="niveis-quizz" onclick="selecionaNivel(this)">
+                    <div class="nivel 1">
+                        <input type="text" class="titulo-nivel" placeholder="Título do nível">
+                        <input type="text" class="porcentagem-acerto" placeholder="% de acerto mínima">
+                        <input type="text" class="url-imagem-nivel" placeholder="URL da imagem do nível">
+                        <input type="text" class="descricao-nivel" placeholder="Descrição do nível">
+                    </div>
+                </div>
+                <button onclick="finalizarCriacaoQuizz()">Finalizar Quizz</button>
             </div>
             <div class="tela3-sucesso-quizz escondido">
-
+                <div class="sucesso-quizz-topo"><p>Seu quizz está pronto!</p></div>
+                <div class="sucesso-quizz" onclick="selecionaNivel(this)">
+                    <img src="https://http.cat/200" alt="gato ok">
+                    <h6>Qual gato net você é?</h6>
+                </div>
+                <button onclick="AcessarQuizz()">Acessar Quizz</button>
+                <button onclick="voltarHome()">Voltar pra home</button>
             </div>
         </div>
     </main>
