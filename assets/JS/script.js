@@ -1,0 +1,6 @@
+// VARIÁVEIS GLOBAIS
+
+
+function criarQuizz() {
+    
+}
