@@ -31,10 +31,44 @@
         </div>
         <div class="tela2 escondido"></div>
         <div class="tela3 escondido">
-            <div class="tela3-info-quizz"></div>
-            <div class="tela3-pergunta-quizz"></div>
-            <div class="tela3-niveis-quizz"></div>
-            <div class="tela3-sucesso-quizz"></div>
+            <div class="tela3-info-quizz escondido">
+                <div class="info-quizz-topo"><p>Comece pelo Começo</p></div>
+                <div class="info-quizz-perguntas">
+                    <input type="text" class="titulo-quizz" placeholder="Título do seu quizz">
+                    <input type="text" class="url-imagem-quizz" placeholder="URL da imagem do seu quizz">
+                    <input type="text" class="qnt-perguntas-quizz" placeholder="Quantidade de perguntas do quizz">
+                    <input type="text" class="qnt-niveis-quizz" placeholder="Quantidade de níveis do quizz">
+                </div>
+                <button onclick="prosseguirParaPerguntas()">Prosseguir pra criar perguntas</button>
+            </div>
+            <div class="tela3-perguntas-quizz escondido">
+                <div class="perguntas-quizz-topo"><p>Crie suas perguntas</p></div>
+                <div class="perguntas-quizz pergunta 1" onclick="selecionaPergunta(this)">
+                    <div class="pergunta-texto">
+                        <input type="text" class="texto" placeholder="Texto da pergunta">
+                        <input type="text" class="cor-fundo" placeholder="Cor de fundo da pergunta">
+                    </div>
+                    <div class="resposta-correta">
+                        <input type="text" class="correta" placeholder="Resposta correta">
+                        <input type="text" class="correta-url" placeholder="URL da imagem">
+                    </div>
+                    <div class="resposta-incorreta">
+                        <input type="text" class="incorreta-1" placeholder="Resposta incorreta 1">
+                        <input type="text" class="incorreta-url-1" placeholder="URL da imagem 1">
+                        <input type="text" class="incorreta-2" placeholder="Resposta incorreta 2">
+                        <input type="text" class="incorreta-url-2" placeholder="URL da imagem 2">
+                        <input type="text" class="incorreta-3" placeholder="Resposta incorreta 3">
+                        <input type="text" class="incorreta-url-3" placeholder="URL da imagem 3">
+                    </div>
+                </div>
+                <button onclick="prosseguirParaNiveis()">Prosseguir pra criar níveis</button>
+            </div>
+            <div class="tela3-niveis-quizz escondido">
+
+            </div>
+            <div class="tela3-sucesso-quizz escondido">
+
+            </div>
         </div>
     </main>
     <footer></footer>
