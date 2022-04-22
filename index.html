@@ -61,8 +61,10 @@
                 </div>
 
             <!--Quizz pessoal com conteúdo -->
+
+            <!-- Quizz comunidade -->
             <div class="info-comunidade">
-            <h2>Todos os Quizzes</h2>
+            <h3>Todos os Quizzes</h3>
             </div>
             <div class="container-comunidade">
                 <div class="quizz-comunidade">
@@ -103,7 +105,10 @@
                 </div>
                 
             </div>
+            <!-- Quizz comunidade -->
         </div>
+        
+        <!-- Tela do Quizz -->
         <div class="tela-dois escondido">
             <div class="banner">
                 <p>O quão TOP o Lucas é?</p>
@@ -174,9 +179,12 @@
 
 
         </div>
-        <div class="tela-tres escondido">
-            <div class="tela-tres-info-quizz escondido">
-                <div class="info-quizz-topo"><p>Comece pelo Começo</p></div>
+        <!-- Tela do Quizz -->
+
+        <!-- Tela de Criação do Quizz -->
+        <div class="tela-tres">
+            <div class="tela3-info-quizz escondido">
+                <div class="info-quizz-topo"><h2>Comece pelo Começo</h2></div>
                 <div class="info-quizz-perguntas">
                     <input type="text" class="titulo-quizz" placeholder="Título do seu quizz">
                     <input type="text" class="url-imagem-quizz" placeholder="URL da imagem do seu quizz">
@@ -185,50 +193,77 @@
                 </div>
                 <button onclick="prosseguirParaPerguntas()">Prosseguir pra criar perguntas</button>
             </div>
-            <div class="tela-tres-perguntas-quizz escondido">
-                <div class="perguntas-quizz-topo"><p>Crie suas perguntas</p></div>
-                <div class="perguntas-quizz pergunta 1" onclick="selecionaPergunta(this)">
-                    <div class="pergunta-texto">
-                        <input type="text" class="texto" placeholder="Texto da pergunta">
-                        <input type="text" class="cor-fundo" placeholder="Cor de fundo da pergunta">
-                    </div>
-                    <div class="resposta-correta">
-                        <input type="text" class="correta" placeholder="Resposta correta">
-                        <input type="text" class="correta-url" placeholder="URL da imagem">
-                    </div>
-                    <div class="resposta-incorreta">
-                        <input type="text" class="incorreta-1" placeholder="Resposta incorreta 1">
-                        <input type="text" class="incorreta-url-1" placeholder="URL da imagem 1">
-                        <input type="text" class="incorreta-2" placeholder="Resposta incorreta 2">
-                        <input type="text" class="incorreta-url-2" placeholder="URL da imagem 2">
-                        <input type="text" class="incorreta-3" placeholder="Resposta incorreta 3">
-                        <input type="text" class="incorreta-url-3" placeholder="URL da imagem 3">
-                    </div>
+            <div class="tela3-perguntas-quizz escondido">
+                <div class="perguntas-quizz-topo"><h2>Crie suas perguntas</h2></div>
+                <div class="perguntas-quizz-pergunta 1" onclick="selecionaPergunta(this)">
+                <h3>Pergunta 1</h3> <ion-icon name="create-outline"></ion-icon>
                 </div>
+                <div class="container-info-pergunta">
+                    <div class="organizador">
+                        <h3>Pergunta 2</h3>
+                        <div class="pergunta-texto">
+                            <input type="text" class="texto" placeholder="Texto da pergunta">
+                            <input type="text" class="cor-fundo" placeholder="Cor de fundo da pergunta">
+                        </div>
+                        <h3>Resposta correta</h3>
+                        <div class="resposta-correta">
+                            <input type="text" class="correta" placeholder="Resposta correta">
+                            <input type="text" class="correta-url" placeholder="URL da imagem">
+                        </div>
+                        <h3>Respostas incorretas</h3>
+                        <div class="resposta-incorreta">
+                            <input type="text" class="incorreta-1" placeholder="Resposta incorreta 1">
+
+                            <input type="text" class="incorreta-url-1" placeholder="URL da imagem 1">
+                        </div>
+                        <div class="resposta-incorreta">
+                            <input type="text" class="incorreta-2" placeholder="Resposta incorreta 2">
+                            <input type="text" class="incorreta-url-2" placeholder="URL da imagem 2">
+                        </div>
+                        <div class="resposta-incorreta">
+                            <input type="text" class="incorreta-3" placeholder="Resposta incorreta 3">
+                            <input type="text" class="incorreta-url-3" placeholder="URL da imagem 3">
+                        </div>
+                    </div>    
+                </div>
+                <div class="perguntas-quizz-pergunta 3" onclick="selecionaPergunta(this)">
+                    <h3>Pergunta 3</h3> <ion-icon name="create-outline"></ion-icon>
+                    </div>
                 <button onclick="prosseguirParaNiveis()">Prosseguir pra criar níveis</button>
             </div>
-            <div class="tela-tres-niveis-quizz escondido">
-                <div class="niveis-quizz-topo"><p>Agora, decida os níveis!</p></div>
+            <div class="tela3-niveis-quizz escondido">
+                <div class="niveis-quizz-topo"><h2>Agora, decida os níveis!</h2></div>
                 <div class="niveis-quizz" onclick="selecionaNivel(this)">
                     <div class="nivel 1">
-                        <input type="text" class="titulo-nivel" placeholder="Título do nível">
-                        <input type="text" class="porcentagem-acerto" placeholder="% de acerto mínima">
-                        <input type="text" class="url-imagem-nivel" placeholder="URL da imagem do nível">
-                        <input type="text" class="descricao-nivel" placeholder="Descrição do nível">
+                        <div class="container-nivel">
+                            <h3>Nível 1</h3>
+                            <input type="text" class="titulo-nivel" placeholder="Título do nível">
+                            <input type="text" class="porcentagem-acerto" placeholder="% de acerto mínima">
+                            <input type="text" class="url-imagem-nivel" placeholder="URL da imagem do nível">
+                            <input type="text" class="descricao-nivel" placeholder="Descrição do nível">
+                        </div>
+                    </div>
+                    <div class="nivel-quizz">
+                        <h3>Nível 2</h3><ion-icon name="create-outline"></ion-icon>
+                    </div>
+                    <div class="nivel-quizz">
+                        <h3>Nível 3</h3><ion-icon name="create-outline"></ion-icon>
                     </div>
                 </div>
                 <button onclick="finalizarCriacaoQuizz()">Finalizar Quizz</button>
             </div>
-            <div class="tela-tres-sucesso-quizz escondido">
-                <div class="sucesso-quizz-topo"><p>Seu quizz está pronto!</p></div>
+            <div class="tela3-sucesso-quizz escondido">
+                <div class="sucesso-quizz-topo"><h2>Seu quizz está pronto!</h2></div>
                 <div class="sucesso-quizz" onclick="selecionaNivel(this)">
-                    <img src="https://http.cat/200" alt="gato ok">
-                    <h6>Qual gato net você é?</h6>
+                    <div class="gradiente"><p>Qual gato net você é?</p></div>
+                    <img src="https://http.cat/200" alt="gato ok"/>
                 </div>
                 <button onclick="AcessarQuizz()">Acessar Quizz</button>
-                <button onclick="voltarHome()">Voltar pra home</button>
+                <div class="home"><button onclick="voltarHome()">Voltar pra home</button></div>
+                
             </div>
         </div>
+        <!-- Tela de Criação do Quizz -->
     </main>
     <footer></footer>
 

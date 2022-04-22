@@ -32,16 +32,14 @@ header h1 {
 
 main h2{
     font-weight: 700;
+    font-size: 23px;
+    color: #000000;
+}
+main h3{
+    font-weight: 700;
     font-size: 20px;
     color: #000000;
 }
-
-.tela-dois {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 /* Início - Tela Um*/
 .container-usuario-vazio{
     display: flex;
@@ -211,6 +209,11 @@ main h2{
 /*Fim - Tela Um*/
 
 /* Início - Tela Dois*/
+.tela-dois {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .banner{
     width: 100vw;
     height: 227px;
@@ -284,9 +287,306 @@ color: #000000;
 /* Fim - Tela Dois*/
 
 /* Início - Tela Três */
+.tela-tres h2{
+    margin: 63px 0px 36px;
+}
+/*Tela 3.1 */
+.tela3-info-quizz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tela3-info-quizz .info-quizz-topo{
+    margin: 71px 0px 27px;
+}
+.tela3-info-quizz .info-quizz-perguntas{
+    width: 600px;
+    height: 256px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+
+.tela3-info-quizz .info-quizz-perguntas input{
+    width: 564px;
+    height: 46px;
+    border: 1px solid #D1D1D1;
+    padding-left: 23px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 19px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.tela3-info-quizz .info-quizz-perguntas input::placeholder{
+    font-style: italic;
+    font-size: 19px;
+    font-weight: 400;
+    color: #BABABA;
+}
+
+.tela3-info-quizz button{
+    width: 368.86px;
+    height: 54px;
+    margin-top: 85px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    border: none;
+    font-weight: 400;
+    font-size: 21px;
+    text-align: center;
+    color: #FFF5F4;
+}
+
+.tela3-info-quizz button:hover{
+    cursor: pointer;
+    opacity: 0.93;
+}
+/* Fim - Tela 3.1*/
+
+/*Tela 3.2*/
+
+.tela3-perguntas-quizz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tela3-perguntas-quizz .perguntas-quizz-pergunta{
+    width: 601px;
+    height: 74px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 17px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+}
+
+.tela3-perguntas-quizz .perguntas-quizz-pergunta ion-icon{
+    font-size: 30px;
+}
+
+.tela3-perguntas-quizz .perguntas-quizz-pergunta ion-icon:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.tela3-perguntas-quizz .container-info-pergunta{
+    width: 600px;
+    height: 825px;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.tela3-perguntas-quizz .container-info-pergunta .organizador{
+    display: flex;
+    flex-direction: column;
+}
+.tela-tres input{
+    width: 564px;
+    height: 46px;
+    border: 1px solid #D1D1D1;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 19px;
+    color: #000000;
+    padding: 0 20px;
+}
+
+.tela-tres input::placeholder{
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    color: #BABABA;
+}
+
+.tela3-perguntas-quizz .container-info-pergunta .pergunta-texto{
+    width: 564px;
+    height: 106px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 14px;
+    margin-bottom: 20px;
+}
+.tela3-perguntas-quizz .container-info-pergunta .resposta-correta{
+    width: 564px;
+    height: 106px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 14px;
+    margin-bottom: 20px;
+}
+.tela3-perguntas-quizz .container-info-pergunta .resposta-incorreta{
+    width: 564px;
+    height: 106px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 14px;
+    margin-bottom: 20px;
+}
+.tela3-perguntas-quizz button{
+    width: 353.91px;
+    height: 54px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    border: none;
+    text-align: center;
+    font-size: 21px;
+    font-weight: 400;
+    color: #FFF5F4;
+    margin:57px 0 50px;
+}
+.tela3-perguntas-quizz button:hover{
+    cursor: pointer;
+    opacity: 0.92;
+}
+
+/*Fim Tela 3.2*/
+
+/*Tela 3.3*/
+.tela3-niveis-quizz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tela3-niveis-quizz .container-nivel{
+    width: 600px;
+    height: 316px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    padding: 0 18px;
+    margin-bottom: 24px;
+}
+
+.tela3-niveis-quizz .nivel-quizz{
+    width: 601px;
+    height: 74px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 17px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+}
+
+.tela3-niveis-quizz .nivel-quizz ion-icon{
+    font-size: 30px;
+}
+
+.tela3-niveis-quizz .nivel-quizz ion-icon:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.tela3-niveis-quizz button{
+    width: 353.91px;
+    height: 54px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    border: none;
+    text-align: center;
+    font-size: 21px;
+    font-weight: 400;
+    color: #FFF5F4;
+    margin:57px 0 50px;
+}
+.tela3-niveis-quizz button:hover{
+    cursor: pointer;
+    opacity: 0.92;
+}
+
+/*Fim Tela 3.3*/
+
+/* Tela 3.4 - Sucesso */
+.tela3-sucesso-quizz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tela3-sucesso-quizz img{
+    width: 500px;
+    height: 266px;
+    object-fit: fill;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 45px;
+}
+
+.tela3-sucesso-quizz button{
+    width: 353.91px;
+    height: 54px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    border: none;
+    text-align: center;
+    font-size: 21px;
+    font-weight: 400;
+    color: #FFF5F4;
+    margin-bottom: 10px;
+}
+
+.tela3-sucesso-quizz .home button{
+    width: 353.91px;
+    height: 54px;
+    border: none;
+    background-color: #FAFAFA;
+    text-align: center;
+    font-size: 21px;
+    font-weight: 400;
+    color: #818181;
+    margin-bottom: 10px;
+}
+
+.tela3-sucesso-quizz button:hover{
+    cursor: pointer;
+    opacity: 0.92;
+}
+
+/* Fim Tela 3.4 */
 /* Fim - Tela Três */
 /* EFEITOS VISUAIS */
 
 .escondido {
     display: none;
 }
+
+.gradiente{
+    width: 500px;
+    height: 266px;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%);
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+}
+
+.gradiente p{
+    font-weight: 400;
+    font-size: 23px;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0px 0px 15px 20px;
+}
+
