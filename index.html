@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/IMAGE/favicon.png">
     <link rel="stylesheet" href="/Projeto_06_BuzzQuizz/assets/CSS/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +16,11 @@
 <body>
     <header><h1>BuzzQuizz</h1></header>
     <main>
-        <div class="tela-um">
+        <div class="carregando">
+            <img src="assets/IMAGE/carregato.gif" alt="">
+            <p>Carregando</p>
+        </div>
+        <div class="tela-um escondido">
            <!--Quizz pessoal vazio -->
             <div class="container-usuario-vazio escondido">
                 <div class="quizz-usuario-vazio">
@@ -117,19 +122,19 @@
                 <div class="questao">
                     <div class="pergunta"><p>Qual desses Lucas é o mais TOP?</p></div>
                     <div class="resposta">
-                        <img src="/Projeto_06_BuzzQuizz/assets/IMAGE/lucas-sorridente.png" alt="Lucas sendo TOP"/>
+                        <img src="assets/IMAGE/lucas-sorridente.png" alt="Lucas sendo TOP"/>
                         <p>Lucas Sorridente</p>
                     </div>
                     <div class="resposta">
-                        <img src="/assets/IMAGE/lucas-coxinha.png" alt="Lucas com coxinha"/>
+                        <img src="assets/IMAGE/lucas-coxinha.png" alt="Lucas com coxinha"/>
                         <p>Lucas coxinha</p>
                     </div>
                     <div class="resposta">
-                        <img src="/assets/IMAGE/lucas-sem-cabelo.png" alt="Lucas sem cabelo"/>
+                        <img src="assets/IMAGE/lucas-sem-cabelo.png" alt="Lucas sem cabelo"/>
                         <p>Lucas sem cabelo</p>
                     </div>
                     <div class="resposta">
-                        <img src="/assets/IMAGE/lucas-encantador.png" alt="Lucas encantador de gatos"/>
+                        <img src="assets/IMAGE/lucas-encantador.png" alt="Lucas encantador de gatos"/>
                         <p>Lucas encantador de gatos</p>
                     </div>
                 </div>
@@ -138,19 +143,19 @@
                 <div class="questao">
                     <div class="pergunta"><p>Qual desses Lucas é o mais TOP?</p></div>
                     <div class="resposta">
-                        <img src="/assets/IMAGE/lucas-sorridente.png" alt="Lucas sendo TOP"/>
+                        <img src="assets/IMAGE/lucas-sorridente.png" alt="Lucas sendo TOP"/>
                         <p>Lucas Sorridente</p>
                     </div>
                     <div class="resposta">
-                        <img src="/assets/IMAGE/lucas-coxinha.png" alt="Lucas com coxinha"/>
+                        <img src="assets/IMAGE/lucas-coxinha.png" alt="Lucas com coxinha"/>
                         <p>Lucas coxinha</p>
                     </div>
                     <div class="resposta">
-                        <img src="/assets/IMAGE/lucas-sem-cabelo.png" alt="Lucas sem cabelo"/>
+                        <img src="assets/IMAGE/lucas-sem-cabelo.png" alt="Lucas sem cabelo"/>
                         <p>Lucas sem cabelo</p>
                     </div>
                     <div class="resposta">
-                        <img src="/assets/IMAGE/lucas-encantador.png" alt="Lucas encantador de gatos"/>
+                        <img src="assets/IMAGE/lucas-encantador.png" alt="Lucas encantador de gatos"/>
                         <p>Lucas encantador de gatos</p>
                     </div>
                 </div>
@@ -159,19 +164,19 @@
                 <div class="questao">
                     <div class="pergunta"><p>Qual desses Lucas é o mais TOP?</p></div>
                     <div class="resposta">
-                        <img src="/assets/IMAGE/lucas-sorridente.png" alt="Lucas sendo TOP"/>
+                        <img src="assets/IMAGE/lucas-sorridente.png" alt="Lucas sendo TOP"/>
                         <p>Lucas Sorridente</p>
                     </div>
                     <div class="resposta">
-                        <img src="/assets/IMAGE/lucas-coxinha.png" alt="Lucas com coxinha"/>
+                        <img src="assets/IMAGE/lucas-coxinha.png" alt="Lucas com coxinha"/>
                         <p>Lucas coxinha</p>
                     </div>
                     <div class="resposta">
-                        <img src="/assets/IMAGE/lucas-sem-cabelo.png" alt="Lucas sem cabelo"/>
+                        <img src="assets/IMAGE/lucas-sem-cabelo.png" alt="Lucas sem cabelo"/>
                         <p>Lucas sem cabelo</p>
                     </div>
                     <div class="resposta">
-                        <img src="/assets/IMAGE/lucas-encantador.png" alt="Lucas encantador de gatos"/>
+                        <img src="assets/IMAGE/lucas-encantador.png" alt="Lucas encantador de gatos"/>
                         <p>Lucas encantador de gatos</p>
                     </div>
                 </div>
@@ -182,7 +187,7 @@
         <!-- Tela do Quizz -->
 
         <!-- Tela de Criação do Quizz -->
-        <div class="tela-tres">
+        <div class="tela-tres escondido">
             <div class="tela-tres-info-quizz escondido">
                 <div class="info-quizz-topo"><h2>Comece pelo Começo</h2></div>
                 <div class="info-quizz-perguntas">
@@ -270,6 +275,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="/Projeto_06_BuzzQuizz/assets/JS/script.js"></script>
+    <script src="assets/JS/scriptAPI.js"></script>
+    <script src="assets/JS/script.js"></script>
 </body>
 </html>

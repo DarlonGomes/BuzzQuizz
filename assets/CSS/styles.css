@@ -566,6 +566,25 @@ color: #000000;
 
 /* Fim Tela 3.4 */
 /* Fim - Tela Três */
+
+
+/* TELA DE CARREGAMENTO */
+.carregando img{
+    max-width: 420px;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.carregando {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: red;
+    font-size: 25px;
+}
+/* FIM - TELA DE CARREGAMENTO */
+
 /* EFEITOS VISUAIS */
 
 .escondido {

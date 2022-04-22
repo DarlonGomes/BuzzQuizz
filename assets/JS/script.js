@@ -1,5 +1,4 @@
 // VARIÁVEIS GLOBAIS
-const API = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes";
 
 // Variáveis p/ criar quizz (tela 3.1)
 let tituloQuizz = "";
@@ -123,3 +122,4 @@ function voltarHome() {
 
     //Carrega os quizzes da comunidade
 }
+
