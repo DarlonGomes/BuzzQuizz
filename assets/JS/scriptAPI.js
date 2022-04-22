@@ -84,38 +84,28 @@ function renderizarQuizzSelecionado (el) {
     </div>
     `
     for(let i = 0; i < perguntas; i++) {
-        let resposta = quizz.questions[i].answers
-
+        containerQuizz.innerHTML += `
+        <div class="container-questao">
+            <div class="questao q${i}">
+                <div class="pergunta" style="color:${quizz.questions[i].color}"><p>${quizz.questions[i].title}</p></div>
+            </div>
+        </div>
+        `
+    }
+    for(let i = 0; i < perguntas; i++) {
+        const resposta = quizz.questions[i].answers
         for(let j = 0; j < resposta.length; j++) {
-
-            containerQuizz.innerHTML += `
-            <div class="container-questao">
-                <div class="questao">
-                    <div class="pergunta" style="color:${quizz.questions[i].color}"><p>${quizz.questions[i].title}</p></div>
-                    <div class="resposta">
-                        <img src="${resposta[j].image}" id="${resposta[j].isCorrectAnswer}" alt="Imagem: ${resposta[j].text}"/>
-                        <p>${resposta[j].text}</p>
-                    </div>
-                    <div class="resposta">
-                        <img src="${resposta[j].image}" id="${resposta[j].isCorrectAnswer}" alt="Imagem: ${resposta[j].text}"/>
-                        <p>${resposta[j].text}</p>
-                    </div>
-                    <div class="resposta">
-                        <img src="${resposta[j].image}" id="${resposta[j].isCorrectAnswer}" alt="Imagem: ${resposta[j].text}"/>
-                        <p>${resposta[j].text}</p>
-                    </div>
-                    <div class="resposta">
-                        <img src="${resposta[j].image}" id="${resposta[j].isCorrectAnswer}" alt="Imagem: ${resposta[j].text}"/>
-                        <p>${resposta[j].text}</p>
-                    </div>
-                </div>
+            document.querySelector(`.q${i}`).innerHTML += `
+            <div class="resposta">
+                <img src="${resposta[j].image}" id="${resposta[j].isCorrectAnswer}" alt="Imagem: ${resposta[j].text}"/>
+                <p>${resposta[j].text}</p>
             </div>
             `
         }
-
-
     }
-
+    for(let i = 0; i < niveis; i++) {
+        
+    }
 
 
     if(qualPagina === "tela-dois") {
@@ -123,31 +113,3 @@ function renderizarQuizzSelecionado (el) {
         document.querySelector(".carregando").classList.add("escondido");
     }
 }
-
-// <div class="container-questao">
-// <div class="questao">
-//     <div class="pergunta"><p>Qual desses Lucas é o mais TOP?</p></div>
-//     <div class="resposta">
-//         <img src="assets/IMAGE/lucas-sorridente.png" alt="Lucas sendo TOP"/>
-//         <p>Lucas Sorridente</p>
-//     </div>
-//     <div class="resposta">
-//         <img src="assets/IMAGE/lucas-coxinha.png" alt="Lucas com coxinha"/>
-//         <p>Lucas coxinha</p>
-//     </div>
-//     <div class="resposta">
-//         <img src="assets/IMAGE/lucas-sem-cabelo.png" alt="Lucas sem cabelo"/>
-//         <p>Lucas sem cabelo</p>
-//     </div>
-//     <div class="resposta">
-//         <img src="assets/IMAGE/lucas-encantador.png" alt="Lucas encantador de gatos"/>
-//         <p>Lucas encantador de gatos</p>
-//     </div>
-// </div>
-// </div>
-
-// id: 160
-// image: "https://http.cat/411.jpg"
-// levels: (2) [{…}, {…}]
-// questions: (3) [{…}, {…}, {…}]
-// title: "Título do quizz"
