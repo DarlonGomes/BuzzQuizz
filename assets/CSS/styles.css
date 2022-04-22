@@ -132,6 +132,7 @@ main h3{
     justify-content: flex-start;
     flex-wrap: wrap;
     margin-bottom: 48px;
+    position: relative;
 }
 
 
@@ -159,6 +160,14 @@ main h3{
     color: #FFFFFF;
     text-align: center;
     margin: 0px 0px 10px 20px;
+}
+
+.container-usuario .quizz-usuario img {
+    pointer-events: none;
+    position: absolute;
+    width: 340px;
+    height: 181px;
+    z-index: -1;
 }
 
 /* Fim do CSS Quizz com conteúdo*/
@@ -246,6 +255,7 @@ main h3{
     justify-content: center;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57));
     margin-bottom: 42px;
+    position: relative;
 }
 
 .banner p{
@@ -254,6 +264,16 @@ main h3{
     text-align: center;
     color: #FFFFFF;
 }
+
+.banner img{
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 227px;
+    z-index: -1;
+    object-fit: contain;
+}
+
 
 .container-questao{
     width: 759px;
