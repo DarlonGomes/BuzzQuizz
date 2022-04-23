@@ -430,24 +430,6 @@ color: #000000;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 
-.tela-tres-info-quizz .info-quizz-perguntas input{
-    width: 564px;
-    height: 46px;
-    border: 1px solid #D1D1D1;
-    padding-left: 23px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    font-size: 19px;
-    font-weight: 400;
-    color: #000000;
-}
-
-.tela-tres-info-quizz .info-quizz-perguntas input::placeholder{
-    font-style: italic;
-    font-size: 19px;
-    font-weight: 400;
-    color: #BABABA;
-}
 
 .tela-tres-info-quizz button{
     width: 368.86px;
@@ -866,4 +848,171 @@ font-size: 13px;
     margin: 0px 0px 20px;
 }
 
+/* Início - Tela Três */
+.tela-tres h2{
+    margin: 37px 0px 29px;
+}
+/*Tela 3.1 */
+.tela-tres-info-quizz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tela-tres-info-quizz .info-quizz-topo{
+    margin: 0px;
+}
+.tela-tres-info-quizz .info-quizz-perguntas{
+    width: 375px;
+}
+
+.tela-tres-info-quizz button{
+    width: 323px;
+    height: 54px;
+    margin-top: 29px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    border: none;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    color: #FFF5F4;
+}
+
+.tela-tres-info-quizz button:hover{
+    cursor: pointer;
+    opacity: 0.93;
+}
+/* Fim - Tela 3.1*/
+
+/*Tela 3.2*/
+
+.tela-tres-perguntas-quizz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tela-tres-perguntas-quizz .perguntas-quizz-pergunta{
+    width: 375px;
+    height: 74px;
+    margin-bottom: 24px;
+}
+
+.tela-tres-perguntas-quizz .perguntas-quizz-pergunta ion-icon{
+    font-size: 30px;
+}
+
+.tela-tres-perguntas-quizz .perguntas-quizz-pergunta ion-icon:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.tela-tres-perguntas-quizz .container-info-pergunta{
+    width: 375px;
+    height: 825px;
+    margin-bottom: 24px;
+}
+
+.tela-tres-perguntas-quizz .container-info-pergunta .organizador{
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+}
+.tela-tres input{
+    width: 340px;
+    height: 46px;
+    border: 1px solid #D1D1D1;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 19px;
+    color: #000000;
+    padding: 0 20px;
+}
+
+.tela-tres input::placeholder{
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    color: #BABABA;
+}
+
+.tela-tres-perguntas-quizz .container-info-pergunta .pergunta-texto{
+    width: 375px;
+    height: 106px;
+}
+.tela-tres-perguntas-quizz .container-info-pergunta .resposta-correta{
+    width: 375px;
+    height: 106px;
+}
+.tela-tres-perguntas-quizz .container-info-pergunta .resposta-incorreta{
+    width: 375px;
+}
+.tela-tres-perguntas-quizz button{
+    width: 323px;   
+    font-size: 18px;
+}
+
+/*Fim Tela 3.2*/
+
+/*Tela 3.3*/
+.tela-tres-niveis-quizz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tela-tres-niveis-quizz .container-nivel{
+    width: 375px;
+}
+
+.tela-tres-niveis-quizz .nivel-quizz{
+    width: 375px;
+}
+
+.tela-tres-niveis-quizz button{
+    width: 323px;
+    font-size: 18px;
+    margin:28px 0 50px;
+}
+
+/*Fim Tela 3.3*/
+
+/* Tela 3.4 - Sucesso */
+.tela-tres-sucesso-quizz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tela-tres-sucesso-quizz img{
+    width: 340px;
+    height: 181px;
+    margin-bottom: 24px;
+}
+
+.tela-tres-sucesso-quizz button{
+    width: 323px;
+    height: 54px;
+    font-size: 18px;
+}
+
+.tela-tres-sucesso-quizz .home button{
+    width: 323px;
+    height: 54px;
+    font-size: 18;
+    margin-bottom: 10px;
+}
+/* Fim Tela 3.4 */
+/* Fim - Tela Três */
+.escondido{
+    display: hidden;
+}
+.gradiente{
+    width: 340px;
+    height: 181px;
+}
+
+.gradiente p{
+    font-size: 19px;
+    margin: 0px 0px 15px 15px;
+}
 }
