@@ -27,6 +27,11 @@ header h1 {
     font-size: 37px;
     color: #FFFFFF;
 }
+
+header h1:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
 /* FIM TOPO DA PAGINA */
 
 
@@ -263,7 +268,7 @@ main h3{
     position: relative;
 }
 
-.banner p{
+.banner h3{
     font-size: 39px;
     font-weight: 400;
     text-align: center;
@@ -302,12 +307,11 @@ main h3{
 .container-questao .questao .pergunta{
     width: 688px;
     height: 138px;
-    background-color: #434CA0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.container-questao .questao .pergunta p{
+.container-questao .questao .pergunta h4{
     font-weight: 700;
     font-size: 23px;
     color: #FFFFFF;
@@ -731,6 +735,17 @@ color: #000000;
     text-align: center;
     margin: 0px 0px 15px 20px;
 }
+
+.opaco{
+    opacity: 0.3;
+}
+.textoCerto{
+    text-decoration-color: #009C22;
+}
+ .textoErrado{
+    text-decoration-color: #FF4B4B;
+}  
+
 
 .tem-erro {
     background-color: #FFE9E9;
