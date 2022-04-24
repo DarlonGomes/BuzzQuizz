@@ -3,7 +3,10 @@ const API = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes";
 let qualPagina = "";
 let idQuizz = "";
 let primeiroAcesso = 0;
-
+// Função que retorna pra home no logo
+function retornaHome(){
+    document.location.reload(true)
+}
 //Função que carrega página principal
 
 if(primeiroAcesso === 0) {
@@ -80,14 +83,14 @@ function renderizarQuizzSelecionado (el) {
     containerQuizz.innerHTML = `
     <div class="banner">
         <img src="${quizz.image}" alt="Imagem do Quizz: ${quizz.title}">
-        <p>${quizz.title}</p>
+        <h3>${quizz.title}</h3>
     </div>
     `
     for(let i = 0; i < perguntas; i++) {
         containerQuizz.innerHTML += `
         <div class="container-questao">
             <div class="questao q${i}">
-                <div class="pergunta" style="color:${quizz.questions[i].color}"><p>${quizz.questions[i].title}</p></div>
+                <div class="pergunta" style="background-color:${quizz.questions[i].color}"><h4>${quizz.questions[i].title}</h4></div>
             </div>
         </div>
         `
@@ -96,7 +99,7 @@ function renderizarQuizzSelecionado (el) {
         const resposta = quizz.questions[i].answers
         for(let j = 0; j < resposta.length; j++) {
             document.querySelector(`.q${i}`).innerHTML += `
-            <div class="resposta">
+            <div class="resposta" onclick="validarResposta(this)">
                 <img src="${resposta[j].image}" id="${resposta[j].isCorrectAnswer}" alt="Imagem: ${resposta[j].text}"/>
                 <p>${resposta[j].text}</p>
             </div>
