@@ -5,14 +5,6 @@ function validarResposta(clicado){
         if(opcoes[i] !== clicado){
             opcoes[i].classList.add("opaco") 
         }
-        const resposta = opcoes[i].querySelector("img")
-        const texto = opcoes[i].querySelector("p")
-        if(resposta[i].isCorrectAnswer){
-            texto.classList.add("textoCerto");
-            console.log("rolou")
-            console.log(texto)
-        }else{
-            texto.classList.add("textoErrado");
-        }
+    
     }
 }
