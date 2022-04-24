@@ -1,6 +1,13 @@
 // VARIÁVEIS GLOBAIS
 let contemErro = 0;
-let temRespostaIncorreta = 0;
+let erroExtra = 0;
+let temRespostaCorreta = false;
+let temRespostaIncorreta = false;
+let temRespostaIncorreta2 = false;
+let temRespostaIncorreta3 = false;
+let todasAsPerguntas = 3;
+let todosOsNiveis = 2;
+
 
 // Variáveis p/ criar quizz (tela 3.1)
 let tituloQuizz = "";
@@ -88,7 +95,7 @@ function prosseguirParaPerguntas() {
     } else contemErro--;
 
         //confere erro nas perguntas
-    if(qntPerguntasQuizz < 3) {
+    if(qntPerguntasQuizz < 3 || isNaN(qntPerguntasQuizz)) {
         if(!pergunta.classList.contains("tem-erro")){
             pergunta.classList.add("tem-erro");
             pergunta.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>O quizz deve ter no mínimo 3 perguntas</p></div>`);
@@ -96,7 +103,7 @@ function prosseguirParaPerguntas() {
     } else contemErro--;
 
         //confere erro nos níveis
-    if(qntNiveisQuizz < 2) {
+    if(qntNiveisQuizz < 2 || isNaN(qntNiveisQuizz)) {
         if(!nivel.classList.contains("tem-erro")){
             nivel.classList.add("tem-erro");
             nivel.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>O quizz deve ter no mínimo 2 níveis</p></div>`);
@@ -140,7 +147,11 @@ function prosseguirParaNiveis() {
 
 
     //verifica se as entradas são válida
-    contemErro = 10;
+    contemErro = 6;
+    erroExtra = 4;
+    temRespostaIncorreta = false;
+    temRespostaIncorreta2 = false;
+    temRespostaIncorreta3 = false;
 
         //Retira os avisos
     if(texto.classList.contains("tem-erro")) {
@@ -205,8 +216,11 @@ function prosseguirParaNiveis() {
             correta.classList.add("tem-erro");
             correta.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>Texto não pode estar vazio</p></div>`);
         } 
-    } else contemErro--;
- 
+    } else {
+        contemErro--;
+        temRespostaCorreta = true;
+    }
+
         //confere erro na URL da resposta correta
     let ehURL = urlCheck(respostaCorretaUrl);
     if(!ehURL) {
@@ -220,9 +234,12 @@ function prosseguirParaNiveis() {
     if(respostaIncorreta1.length < 1 || !respostaIncorreta1.replace(/\s/g, '').length) {
         if(!incorreta1.classList.contains("tem-erro")){
             incorreta1.classList.add("tem-erro");
-            incorreta1.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>Texto não pode estar vazio</p></div>`);
+            incorreta1.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>É necessário, no mínimo, 2(duas) respostas</p></div>`);
         } 
-    } else contemErro--;
+    } else {
+        contemErro--;
+        temRespostaIncorreta = true;
+    }
  
         //confere erro na URL da resposta errada 1
     ehURL = urlCheck(respostaIncorretaUrl1);
@@ -234,45 +251,70 @@ function prosseguirParaNiveis() {
     } else contemErro--;
 
         //confere resposta errada 2
-    if(respostaIncorreta2.length < 1 || !respostaIncorreta2.replace(/\s/g, '').length) {
-        if(!incorreta2.classList.contains("tem-erro")){
-            incorreta2.classList.add("tem-erro");
-            incorreta2.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>Texto não pode estar vazio</p></div>`);
-        } 
-    } else contemErro--;
- 
+    if(respostaIncorreta2 !== "" && temRespostaIncorreta) {
+        erroExtra--;
+        temRespostaIncorreta2 = true;
+    } else if(temRespostaIncorreta === false) {
+        incorreta2.classList.add("tem-erro");
+        incorreta2.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>Preencha as respostas em ordem</p></div>`);
+    }
+
         //confere erro na URL da resposta errada 2
-    ehURL = urlCheck(respostaIncorretaUrl2);
-    if(!ehURL) {
-        if(!incorretaUrl2.classList.contains("tem-erro")){
-            incorretaUrl2.classList.add("tem-erro");
-            incorretaUrl2.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>O valor informado não é uma URL válida</p></div>`);
-        }
-    } else contemErro--;
+    if(temRespostaIncorreta2) {
+        ehURL = urlCheck(respostaIncorretaUrl2);
+        if(!ehURL) {
+            if(!incorretaUrl2.classList.contains("tem-erro")){
+                incorretaUrl2.classList.add("tem-erro");
+                incorretaUrl2.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>O valor informado não é uma URL válida</p></div>`);
+            }
+        } else erroExtra--;
+    }
 
         //confere resposta errada 3
-    if(respostaIncorreta3.length < 1 || !respostaIncorreta3.replace(/\s/g, '').length) {
-        if(!incorreta3.classList.contains("tem-erro")){
-            incorreta3.classList.add("tem-erro");
-            incorreta3.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>Texto não pode estar vazio</p></div>`);
-        } 
-    } else contemErro--;
- 
-        //confere erro na URL da resposta errada 3
-    ehURL = urlCheck(respostaIncorretaUrl3);
-    if(!ehURL) {
-        if(!incorretaUrl3.classList.contains("tem-erro")){
-            incorretaUrl3.classList.add("tem-erro");
-            incorretaUrl3.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>O valor informado não é uma URL válida</p></div>`);
-        }
-    } else contemErro--;
-    
+    if(respostaIncorreta3 !== "" && temRespostaIncorreta2 && temRespostaIncorreta) {
+        erroExtra--;
+        temRespostaIncorreta3 = true;
+    } else if(temRespostaIncorreta === false && temRespostaIncorreta2 === false) {
+        incorreta3.classList.add("tem-erro");
+        incorreta3.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>Preencha as respostas em ordem</p></div>`);
+    }
 
-    if(contemErro !== 0) {
+        //confere resposta errada 3
+    if(respostaIncorreta3 !== "" && !temRespostaIncorreta2 && temRespostaIncorreta) {
+        incorreta3.classList.add("tem-erro");
+        incorreta3.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>Preencha as respostas em ordem</p></div>`);
+    }
+
+        //confere erro na URL da resposta errada 3
+    if(temRespostaIncorreta3) {
+        ehURL = urlCheck(respostaIncorretaUrl3);
+        if(!ehURL) {
+            if(!incorretaUrl3.classList.contains("tem-erro")){
+                incorretaUrl3.classList.add("tem-erro");
+                incorretaUrl3.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>O valor informado não é uma URL válida</p></div>`);
+            }
+        } else erroExtra--;
+    }
+
+    if(!temRespostaCorreta) {
         return;
     }
     
+    if(temRespostaIncorreta && !temRespostaIncorreta2 && contemErro !== 0) {
+        return;
+    }
 
+    if(temRespostaIncorreta && temRespostaIncorreta2 && !temRespostaIncorreta3 && erroExtra !== 2) {
+        return;
+    }
+
+    if(temRespostaIncorreta && temRespostaIncorreta2 && temRespostaIncorreta3 && contemErro !== 0) {
+        return;
+    }
+    
+    if(temRespostaIncorreta && temRespostaIncorreta2 && temRespostaIncorreta3 && erroExtra !== 0) {
+        return;
+    }
 
 
     //avança de página
