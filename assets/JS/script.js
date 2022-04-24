@@ -31,6 +31,7 @@ let tituloNivel = "";
 let porcentagemAcerto = "";
 let urlImagemNivel = "";
 let descricaoNivel = "";
+let temPorcentagemZero = false;
 
 
 //Botão para prosseguir para tela de criar Quizz
@@ -54,7 +55,7 @@ function prosseguirParaPerguntas() {
     qntNiveisQuizz = nivel.value;
 
 
-    //verifica se as entradas são válida
+    //verifica se as entradas são válidas
     contemErro = 4;
 
         //Retira os avisos
@@ -174,7 +175,7 @@ function prosseguirParaNiveis() {
 
 
 
-    //verifica se as entradas são válida
+    //verifica se as entradas são válidas
     contemErro = 6;
     erroExtra = 4;
     temRespostaIncorreta = false;
@@ -347,19 +348,89 @@ function prosseguirParaNiveis() {
 
 //Botão da terceira página de criar quizz, prossegue de página para o quizz finalizado, computa os valores e envia o quizz para API (tela 3.3)
 function finalizarCriacaoQuizz() {
+    const titulo = document.querySelector(".tela-tres-niveis-quizz .titulo-nivel");
+    const acerto = document.querySelector(".tela-tres-niveis-quizz .porcentagem-acerto");
+    const urlNivel = document.querySelector(".tela-tres-niveis-quizz .url-imagem-nivel");
+    const descricao = document.querySelector(".tela-tres-niveis-quizz .descricao-nivel");
+
     //pega os inputs
-    tituloNivel = document.querySelector(".tela-tres-niveis-quizz .titulo-nivel").value;
-    porcentagemAcerto = document.querySelector(".tela-tres-niveis-quizz .porcentagem-acerto").value;
-    urlImagemNivel = document.querySelector(".tela-tres-niveis-quizz .url-imagem-nivel").value;
-    descricaoNivel = document.querySelector(".tela-tres-niveis-quizz .descricao-nivel").value;
+    tituloNivel = titulo.value;
+    porcentagemAcerto = acerto.value;
+    urlImagemNivel = urlNivel.value;
+    descricaoNivel = descricao.value;
+
+    //verifica se as entradas são válidas
+    contemErro = 4;
+
+        //Retira os avisos
+    if(titulo.classList.contains("tem-erro")) {
+        titulo.classList.remove("tem-erro");
+        titulo.nextElementSibling.remove();
+    }
+    if(acerto.classList.contains("tem-erro")) {
+        acerto.classList.remove("tem-erro");
+        acerto.nextElementSibling.remove();
+    } 
+    if(urlNivel.classList.contains("tem-erro")) {
+        urlNivel.classList.remove("tem-erro");
+        urlNivel.nextElementSibling.remove();
+    } 
+    if(descricao.classList.contains("tem-erro")) {
+        descricao.classList.remove("tem-erro");
+        descricao.nextElementSibling.remove();
+    }
+
+        //confere erro no título
+    if(tituloNivel.length < 10) {
+        if(!titulo.classList.contains("tem-erro")){
+            titulo.classList.add("tem-erro");
+            titulo.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>O Título precisa ter mais de 10 caracteres</p></div>`);
+        } 
+    } else contemErro--;
+ 
+        //confere erro na URL
+    let ehURL = urlCheck(urlImagemNivel);
+    if(!ehURL) {
+        if(!urlNivel.classList.contains("tem-erro")){
+            urlNivel.classList.add("tem-erro");
+            urlNivel.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>O valor informado não é uma URL válida</p></div>`);
+        }
+    } else contemErro--;
+
+        //confere erro nas perguntas
+    if(porcentagemAcerto < 0 || porcentagemAcerto > 100 || isNaN(porcentagemAcerto) || porcentagemAcerto === "") {
+        if(!acerto.classList.contains("tem-erro")){
+            acerto.classList.add("tem-erro");
+            acerto.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>A % de acerto precisa estar entre 0 e 100</p></div>`);
+        }
+    } else contemErro--;
+
+        //confere erro nos níveis
+    if(descricaoNivel.length < 30) {
+        if(!descricao.classList.contains("tem-erro")){
+            descricao.classList.add("tem-erro");
+            descricao.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>A descrição precisa ter no mínimo 30 caracteres</p></div>`);
+        }
+    } else contemErro--;
+
+    if(contemErro !== 0) {
+        return;
+    }
+    
+    //adiciona os valores ao objeto
+    colocaNoObjeto(3);
+
+    //confere porcentagem 0
+
+
+
+    //envia o quizz para API
+
+
 
     //avança de página
     document.querySelector(".tela-tres-niveis-quizz").classList.add("escondido");
     document.querySelector(".tela-tres-sucesso-quizz").classList.remove("escondido");
-
-    //verifica se as entradas são válidas
-
-    //envia o quizz para API
 }
 
 //Botão da primeira página de criar quizz. Prossegue de página e computa os valores (tela 3.4)
@@ -403,4 +474,12 @@ function colocaNoObjeto(parte) {
     if(parte === 4) {
         
     }
+}
+
+function selecionaPergunta(el) {
+
+}
+
+function selecionaNivel(el) {
+
 }
