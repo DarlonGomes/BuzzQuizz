@@ -119,8 +119,8 @@ function prosseguirParaPerguntas() {
     //renderiza a pagina de perguntas com os inputs
     if(qntNiveisQuizz > 2) {
         for(let i = 0; i < (qntNiveisQuizz - 2); i++) {
-            document.querySelector(".tela-tres-niveis-quizz").innerHTML += `
-            <div class="nivel-quizz ${3 + i}">
+            document.querySelector(".niveis-quizz").innerHTML += `
+            <div class="nivel-quizz ${3 + i}" onclick="selecionaNivel(this)">
                 <h3>Nível ${3 + i}</h3><ion-icon name="create-outline"></ion-icon>
             </div>
             `;
@@ -461,6 +461,10 @@ function colocaNoObjeto(parte) {
     if(parte === 1) {
         novoQuizz.title = tituloQuizz;
         novoQuizz.image = urlImagemQuizz;
+        novoQuizz.questions = [];
+
+        for(let i = 0; i < qntPerguntasQuizz; i++) 
+        novoQuizz.questions.push({title:"",color:"",answers:[{}]});
     }
 
     if(parte === 2) {
@@ -481,5 +485,12 @@ function selecionaPergunta(el) {
 }
 
 function selecionaNivel(el) {
+    const selecionado = document.querySelector(".nivel-selecionado");
 
+    //retorna se o elemento clicado for o mesmo que já está selecionado
+    if(selecionado === el) {
+        return;
+    }
+
+    //
 }
