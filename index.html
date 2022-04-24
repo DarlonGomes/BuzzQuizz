@@ -129,21 +129,23 @@
                 </div>
             </div>
 
-            <div class="container-resultado">
-                <div class="resultado">
-                    <p>BLABLABLA</p>
-                </div>
-                <div class="descricao-resultado">
-                    <img src="" alt=""/>
-                    <div class="texto">
-                        <p> BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA </p>
+                    telaExibida.innerHTML += `
+                <div class="container-resultado">
+                    <div class="resultado">
+                            <p>${niveis.title}</p>
+                    </div>
+                    <div class="descricao-resultado">
+                        <img src="${niveis.image}" alt=""/>
+                        <div class="texto">
+                            <p>${niveis.text}</p>
                     </div>
                 </div>
-            </div>
-            <button>Reiniciar Quizz</button>
-            <div class="home">
-                <button>Voltar pra home</button>
-            </div>
+                </div>
+                    <button>Reiniciar Quizz</button>
+                <div class="home">
+                    <button>Voltar pra home</button>
+                </div>
+                `
 
             -->
         </div>

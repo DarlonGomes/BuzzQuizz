@@ -3,6 +3,8 @@ const API = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes";
 let qualPagina = "";
 let idQuizz = "";
 let primeiroAcesso = 0;
+let perguntas;
+let niveis;
 // Função que retorna pra home no logo
 function retornaHome(){
     document.location.reload(true)
@@ -75,8 +77,8 @@ function carregarQuizz () {
 function renderizarQuizzSelecionado (el) {
     const quizz = el.data;
     const containerQuizz = document.querySelector(".tela-dois");
-    const niveis = quizz.levels.length;
-    const perguntas = quizz.questions.length;
+    niveis = quizz.levels.length;
+    perguntas = quizz.questions.length;
     
     console.log(quizz)
 
