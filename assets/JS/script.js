@@ -5,8 +5,7 @@ let temRespostaCorreta = false;
 let temRespostaIncorreta = false;
 let temRespostaIncorreta2 = false;
 let temRespostaIncorreta3 = false;
-let todasAsPerguntas = 3;
-let todosOsNiveis = 2;
+const novoQuizz = {};
 
 
 // Variáveis p/ criar quizz (tela 3.1)
@@ -14,7 +13,6 @@ let tituloQuizz = "";
 let urlImagemQuizz = "";
 let qntPerguntasQuizz = "";
 let qntNiveisQuizz = "";
-let novoQuizz = {};
 
 // Variáveis p/ perguntas do quizz (tela 3.2)
 let perguntaTexto = "";
@@ -114,6 +112,36 @@ function prosseguirParaPerguntas() {
         return;
     }
     
+    //adiciona os valores ao objeto
+    colocaNoObjeto(1);
+
+    //renderiza a pagina de perguntas com os inputs
+    if(qntNiveisQuizz > 2) {
+        for(let i = 0; i < (qntNiveisQuizz - 2); i++) {
+            document.querySelector(".tela-tres-niveis-quizz").innerHTML += `
+            <div class="nivel-quizz ${3 + i}">
+                <h3>Nível ${3 + i}</h3><ion-icon name="create-outline"></ion-icon>
+            </div>
+            `;
+        }
+    }
+    document.querySelector(".tela-tres-niveis-quizz").innerHTML += `
+    <button onclick="finalizarCriacaoQuizz()">Finalizar Quizz</button>
+    `
+
+    if(qntPerguntasQuizz > 3) {
+        for(let i = 0; i < (qntPerguntasQuizz - 3); i++) {
+            document.querySelector(".tela-tres-perguntas-quizz").innerHTML += `
+            <div class="perguntas-quizz-pergunta ${4 + i}" onclick="selecionaPergunta(this)">
+                <h3>Pergunta ${4 + i}</h3> <ion-icon name="create-outline"></ion-icon>
+            </div>
+            `
+        }
+    }
+    document.querySelector(".tela-tres-perguntas-quizz").innerHTML += `
+    <button onclick="prosseguirParaNiveis()">Prosseguir pra criar níveis</button>
+    `;
+
     //avança de página
     document.querySelector(".tela-tres-info-quizz").classList.add("escondido");
     document.querySelector(".tela-tres-perguntas-quizz").classList.remove("escondido");
@@ -296,19 +324,11 @@ function prosseguirParaNiveis() {
         } else erroExtra--;
     }
 
-    if(!temRespostaCorreta) {
+    if(!temRespostaCorreta || contemErro !== 0) {
         return;
     }
     
-    if(temRespostaIncorreta && !temRespostaIncorreta2 && contemErro !== 0) {
-        return;
-    }
-
     if(temRespostaIncorreta && temRespostaIncorreta2 && !temRespostaIncorreta3 && erroExtra !== 2) {
-        return;
-    }
-
-    if(temRespostaIncorreta && temRespostaIncorreta2 && temRespostaIncorreta3 && contemErro !== 0) {
         return;
     }
     
@@ -316,12 +336,13 @@ function prosseguirParaNiveis() {
         return;
     }
 
+    //adiciona os valores ao objeto
+    colocaNoObjeto(2);
 
     //avança de página
     document.querySelector(".tela-tres-perguntas-quizz").classList.add("escondido");
     document.querySelector(".tela-tres-niveis-quizz").classList.remove("escondido");
 
-    //verifica se as entradas são válidas
 }
 
 //Botão da terceira página de criar quizz, prossegue de página para o quizz finalizado, computa os valores e envia o quizz para API (tela 3.3)
@@ -363,4 +384,23 @@ function urlCheck(str)
         {
           return false;
         }
+}
+
+function colocaNoObjeto(parte) {
+    if(parte === 1) {
+        novoQuizz.title = tituloQuizz;
+        novoQuizz.image = urlImagemQuizz;
+    }
+
+    if(parte === 2) {
+        
+    }
+
+    if(parte === 3) {
+        
+    }
+
+    if(parte === 4) {
+        
+    }
 }
