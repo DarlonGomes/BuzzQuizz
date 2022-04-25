@@ -1,20 +1,25 @@
 let contadorReposta = 0;
 
-function validarResposta(clicado){
-    const opcoes = clicado.parentNode.querySelectorAll(".resposta")
-    const tela = clicado.parentNode
+function validarResposta(element){
+    const opcoes = element.parentNode.querySelectorAll(".resposta")
+    const tela = element.parentNode
     for(let i = 0; i < opcoes.length; i++){
         opcoes[i].removeAttribute("onclick")
-        if(opcoes[i] !== clicado){
+        if(opcoes[i] !== element){
             opcoes[i].classList.add("opaco") 
         }
-        const validar = opcoes[i].querySelector("img");
-        const texto = opcoes[i].querySelector("p");
-        if (validar == "true"){
-            texto.classList.add("textoCerto");
-            console.log(texto)
+    }
+    const validar = element.parentNode.querySelectorAll("img")
+    const texto = element.parentNode.querySelector("p")
+    let arr = [];
+    for(let i = 0;i< validar.length; i++){
+    arr.push(validar[i])
+    let item = arr[i].toString()
+        console.log(item)
+        if(arr[i].id != "false"){
+            arr[i].parentNode.querySelector("p").style.color = "green"
         }else{
-            texto.classList.add("textoErrado")
+            arr[i].parentNode.querySelector("p").style.color = "red";
         }
     }
 contadorReposta += 1;
