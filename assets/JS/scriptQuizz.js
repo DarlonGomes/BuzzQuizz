@@ -23,10 +23,12 @@ function validarResposta(element){
         }
     }
 contadorReposta += 1;
-    scrollNext(tela)
     if(perguntas == contadorReposta){
         exibirNivel()
+
     }
+    scrollNext(tela)
+    
 }
 
 function scrollNext(elemento){
@@ -42,5 +44,22 @@ function exibirNivel(){
 
 function renderizarResultado(promise){
     const telaExibida = document.querySelector(".tela-dois");
-
+    telaExibida.innerHTML += `
+    <div class="container-resultado">
+        <div class="resultado">
+                <p>${niveis.title}</p>
+        </div>
+        <div class="descricao-resultado">
+            <img src="${niveis.image}" alt=""/>
+            <div class="texto">
+                <p>${niveis.text}</p>
+        </div>
+    </div>
+    </div>
+    <button>Reiniciar Quizz</button>
+    <div class="home">
+        <button onclick="retornaHome()">Voltar pra home</button>
+    </div>
+    `
 }
+
