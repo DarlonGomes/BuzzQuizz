@@ -6,7 +6,7 @@ let temRespostaIncorreta = false;
 let temRespostaIncorreta2 = false;
 let temRespostaIncorreta3 = false;
 const novoQuizz = {};
-
+let numId = 0;
 
 // Variáveis p/ criar quizz (tela 3.1)
 let tituloQuizz = "";
@@ -25,6 +25,9 @@ let respostaIncorreta2 = "";
 let respostaIncorretaUrl2 = "";
 let respostaIncorreta3 = "";
 let respostaIncorretaUrl3 = "";
+let perguntasCriadas = 0;
+let qntRespostas = 4;
+let ultimoElemento = "";
 
 // Variáveis p/ níveis do quizz (tela 3.3)
 let tituloNivel = "";
@@ -120,7 +123,7 @@ function prosseguirParaPerguntas() {
     if(qntNiveisQuizz > 2) {
         for(let i = 0; i < (qntNiveisQuizz - 2); i++) {
             document.querySelector(".niveis-quizz").innerHTML += `
-            <div class="nivel-quizz ${3 + i}" onclick="selecionaNivel(this)">
+            <div class="nivel-quizz" id="n${3 + i}" onclick="selecionaNivel(this)">
                 <h3>Nível ${3 + i}</h3><ion-icon name="create-outline"></ion-icon>
             </div>
             `;
@@ -133,7 +136,7 @@ function prosseguirParaPerguntas() {
     if(qntPerguntasQuizz > 3) {
         for(let i = 0; i < (qntPerguntasQuizz - 3); i++) {
             document.querySelector(".tela-tres-perguntas-quizz").innerHTML += `
-            <div class="perguntas-quizz-pergunta ${4 + i}" onclick="selecionaPergunta(this)">
+            <div class="perguntas-quizz-pergunta" id="p${4 + i}" onclick="selecionaPergunta(this)">
                 <h3>Pergunta ${4 + i}</h3> <ion-icon name="create-outline"></ion-icon>
             </div>
             `
@@ -150,6 +153,274 @@ function prosseguirParaPerguntas() {
 
 //Botão da segunda página de criar quizz, prossegue de página para níveis e computa os valores (tela 3.2)
 function prosseguirParaNiveis() {
+
+    const semErro = verificaPergunta(ultimoElemento.firstElementChild.id);
+    if(!semErro) {
+        return;
+    }
+
+    //verificações
+    const tudoFeito = document.querySelectorAll(".feito").length;
+    if(tudoFeito !== Number(qntPerguntasQuizz)) {
+        return;
+    }
+
+    //avança de página
+    document.querySelector(".tela-tres-perguntas-quizz").classList.add("escondido");
+    document.querySelector(".tela-tres-niveis-quizz").classList.remove("escondido");
+
+}
+
+//Botão da terceira página de criar quizz, prossegue de página para o quizz finalizado, computa os valores e envia o quizz para API (tela 3.3)
+function finalizarCriacaoQuizz() {
+    const titulo = document.querySelector(".tela-tres-niveis-quizz .titulo-nivel");
+    const acerto = document.querySelector(".tela-tres-niveis-quizz .porcentagem-acerto");
+    const urlNivel = document.querySelector(".tela-tres-niveis-quizz .url-imagem-nivel");
+    const descricao = document.querySelector(".tela-tres-niveis-quizz .descricao-nivel");
+
+    //pega os inputs
+    tituloNivel = titulo.value;
+    porcentagemAcerto = acerto.value;
+    urlImagemNivel = urlNivel.value;
+    descricaoNivel = descricao.value;
+
+    //verifica se as entradas são válidas
+    contemErro = 4;
+
+        //Retira os avisos
+    if(titulo.classList.contains("tem-erro")) {
+        titulo.classList.remove("tem-erro");
+        titulo.nextElementSibling.remove();
+    }
+    if(acerto.classList.contains("tem-erro")) {
+        acerto.classList.remove("tem-erro");
+        acerto.nextElementSibling.remove();
+    } 
+    if(urlNivel.classList.contains("tem-erro")) {
+        urlNivel.classList.remove("tem-erro");
+        urlNivel.nextElementSibling.remove();
+    } 
+    if(descricao.classList.contains("tem-erro")) {
+        descricao.classList.remove("tem-erro");
+        descricao.nextElementSibling.remove();
+    }
+
+        //confere erro no título
+    if(tituloNivel.length < 10) {
+        if(!titulo.classList.contains("tem-erro")){
+            titulo.classList.add("tem-erro");
+            titulo.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>O Título precisa ter mais de 10 caracteres</p></div>`);
+        } 
+    } else contemErro--;
+ 
+        //confere erro na URL
+    let ehURL = urlCheck(urlImagemNivel);
+    if(!ehURL) {
+        if(!urlNivel.classList.contains("tem-erro")){
+            urlNivel.classList.add("tem-erro");
+            urlNivel.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>O valor informado não é uma URL válida</p></div>`);
+        }
+    } else contemErro--;
+
+        //confere erro nas perguntas
+    if(porcentagemAcerto < 0 || porcentagemAcerto > 100 || isNaN(porcentagemAcerto) || porcentagemAcerto === "") {
+        if(!acerto.classList.contains("tem-erro")){
+            acerto.classList.add("tem-erro");
+            acerto.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>A % de acerto precisa estar entre 0 e 100</p></div>`);
+        }
+    } else contemErro--;
+
+        //confere erro nos níveis
+    if(descricaoNivel.length < 30) {
+        if(!descricao.classList.contains("tem-erro")){
+            descricao.classList.add("tem-erro");
+            descricao.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>A descrição precisa ter no mínimo 30 caracteres</p></div>`);
+        }
+    } else contemErro--;
+
+    if(contemErro !== 0) {
+        return;
+    }
+    
+    //adiciona os valores ao objeto
+    colocaNoObjeto(3);
+
+    //confere porcentagem 0
+
+
+
+    //envia o quizz para API
+
+
+
+    //avança de página
+    document.querySelector(".tela-tres-niveis-quizz").classList.add("escondido");
+    document.querySelector(".tela-tres-sucesso-quizz").classList.remove("escondido");
+}
+
+//Botão da primeira página de criar quizz. Prossegue de página e computa os valores (tela 3.4)
+function AcessarQuizz() {
+
+}
+
+//Botão da primeira página de criar quizz. Prossegue de página e computa os valores (tela 3.4)
+function voltarHome() {
+    carregarPagina("home");
+}
+
+// Teste se a STRING é uma URL
+function urlCheck(str)
+{
+  regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (regexp.test(str))
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
+}
+
+function colocaNoObjeto(parte) {
+    if(parte === 1) {
+        novoQuizz.title = tituloQuizz;
+        novoQuizz.image = urlImagemQuizz;
+        novoQuizz.questions = [];
+
+        for(let i = 0; i < qntPerguntasQuizz; i++) {
+            novoQuizz.questions.push({title:"",color:"",answers:[]});
+        }
+    }
+
+    if(parte === 2) {
+    //confere se o array das respostas está definido ou não
+    const jahPreenchido = novoQuizz.questions[numId - 1].answers[0];
+
+    //caso não esteja faz o push com a quantidade de respostas
+    if(typeof(jahPreenchido) === "undefined") {
+        for(let i = 0; i < qntRespostas; i++) {
+            novoQuizz.questions[numId - 1].answers.push({text:"",image:"",isCorrectAnswer:""});
+        }
+    }
+
+    //atribui os valores
+        novoQuizz.questions[numId - 1].title = perguntaTexto;
+        novoQuizz.questions[numId - 1].color = perguntaCorFundo;
+        novoQuizz.questions[numId - 1].answers[0].text = respostaCorreta;
+        novoQuizz.questions[numId - 1].answers[0].image = respostaCorretaUrl;
+        novoQuizz.questions[numId - 1].answers[0].isCorrectAnswer = true;
+        novoQuizz.questions[numId - 1].answers[1].text = respostaIncorreta1;
+        novoQuizz.questions[numId - 1].answers[1].image = respostaIncorretaUrl1;
+        novoQuizz.questions[numId - 1].answers[1].isCorrectAnswer = false;
+        novoQuizz.questions[numId - 1].answers[2].text = respostaIncorreta2;
+        novoQuizz.questions[numId - 1].answers[2].image = respostaIncorretaUrl2;
+        novoQuizz.questions[numId - 1].answers[2].isCorrectAnswer = false;
+        novoQuizz.questions[numId - 1].answers[3].text = respostaIncorreta3;
+        novoQuizz.questions[numId - 1].answers[3].image = respostaIncorretaUrl3;
+        novoQuizz.questions[numId - 1].answers[3].isCorrectAnswer = false;
+    }
+
+    if(parte === 3) {
+        
+    }
+
+    if(parte === 4) {
+        
+    }
+}
+
+function selecionaPergunta(el) {
+    const selecionado = document.querySelector(".organizador");
+    const novoId = Number(el.id.replace("p",""));
+    numId = Number(selecionado.id.replace("p",""));
+    let semErro = verificaPergunta(selecionado.id);
+    
+    if(selecionado === el) {
+        console.log("nada acontece, feijoada");
+        return;
+    }
+
+    if(!semErro) {
+        console.log("tem erro, arrume e tente de novo")
+        return;
+    }
+
+    ultimoElemento = el;
+
+    //Arruma o layout para preencher os inputs do item selecionado
+    selecionado.parentElement.classList.add("perguntas-quizz-pergunta");
+    selecionado.parentElement.classList.add("feito");
+    selecionado.parentElement.setAttribute("id", selecionado.id);
+    selecionado.parentElement.setAttribute("onclick", "selecionaPergunta(this)");
+    selecionado.parentElement.classList.remove("container-info-pergunta");
+    selecionado.parentElement.innerHTML = `
+    <h3>Pergunta ${numId}</h3> <ion-icon name="create-outline"></ion-icon>
+    `
+
+
+    //Coloca os inputs no item selecionado
+
+    el.innerHTML = `
+    <div class="organizador" id="p${novoId}" onclick="selecionaPergunta(this)">
+        <h3>Pergunta ${novoId}</h3>
+        <div class="pergunta-texto">
+            <input type="text" class="texto" placeholder="Texto da pergunta">
+            <input type="text" class="cor-fundo" placeholder="Cor de fundo da pergunta">
+        </div>
+        <h3>Resposta correta</h3>
+        <div class="resposta-correta">
+            <input type="text" class="correta" placeholder="Resposta correta">
+            <input type="text" class="correta-url" placeholder="URL da imagem">
+        </div>
+        <h3>Respostas incorretas</h3>
+        <div class="resposta-incorreta">
+            <input type="text" class="incorreta-1" placeholder="Resposta incorreta 1">
+            <input type="text" class="incorreta-url-1" placeholder="URL da imagem 1">
+        </div>
+        <div class="resposta-incorreta">
+            <input type="text" class="incorreta-2" placeholder="Resposta incorreta 2">
+            <input type="text" class="incorreta-url-2" placeholder="URL da imagem 2">
+        </div>
+        <div class="resposta-incorreta">
+            <input type="text" class="incorreta-3" placeholder="Resposta incorreta 3">
+            <input type="text" class="incorreta-url-3" placeholder="URL da imagem 3">
+        </div>
+    </div>    
+    `;
+    el.classList.add("container-info-pergunta");
+    el.classList.remove("perguntas-quizz-pergunta");
+
+    if(el.classList.contains("feito")) { //essa parte da pra melhorar entrando com input
+        el.classList.remove("feito"); //
+        el.querySelector(".texto").value = novoQuizz.questions[novoId - 1].title;
+        el.querySelector(".cor-fundo").value = novoQuizz.questions[novoId - 1].color;
+        el.querySelector(".correta").value = novoQuizz.questions[novoId - 1].answers[0].text;
+        el.querySelector(".correta-url").value = novoQuizz.questions[novoId - 1].answers[0].image;
+        el.querySelector(".incorreta-1").value = novoQuizz.questions[novoId - 1].answers[1].text;
+        el.querySelector(".incorreta-url-1").value = novoQuizz.questions[novoId - 1].answers[1].image;
+        el.querySelector(".incorreta-2").value = novoQuizz.questions[novoId - 1].answers[2].text;
+        el.querySelector(".incorreta-url-2").value = novoQuizz.questions[novoId - 1].answers[2].image;
+        el.querySelector(".incorreta-3").value = novoQuizz.questions[novoId - 1].answers[3].text;
+        el.querySelector(".incorreta-url-3").value = novoQuizz.questions[novoId - 1].answers[3].image;
+    }
+
+    el.removeAttribute("id");
+    el.removeAttribute("onclick");
+}
+
+function selecionaNivel(el) {
+    const selecionado = document.querySelector(".nivel-selecionado");
+
+    //retorna se o elemento clicado for o mesmo que já está selecionado
+    if(selecionado === el) {
+        return;
+    }
+
+    //
+}
+
+function verificaPergunta(id) {
     const texto = document.querySelector(".tela-tres-perguntas-quizz .texto");
     const corFundo = document.querySelector(".tela-tres-perguntas-quizz .cor-fundo");
     const correta = document.querySelector(".tela-tres-perguntas-quizz .correta");
@@ -173,14 +444,13 @@ function prosseguirParaNiveis() {
     respostaIncorreta3 = incorreta3.value;
     respostaIncorretaUrl3 = incorretaUrl3.value;
 
-
-
     //verifica se as entradas são válidas
     contemErro = 6;
     erroExtra = 4;
     temRespostaIncorreta = false;
     temRespostaIncorreta2 = false;
     temRespostaIncorreta3 = false;
+    const qualPergunta = document.getElementById(id);
 
         //Retira os avisos
     if(texto.classList.contains("tem-erro")) {
@@ -325,172 +595,55 @@ function prosseguirParaNiveis() {
         } else erroExtra--;
     }
 
+    //caso tenha erro retira a classe feito se tiver e retorna false
     if(!temRespostaCorreta || contemErro !== 0) {
-        return;
+        if(qualPergunta.classList.contains("feito")) {
+            qualPergunta.classList.remove("feito");
+            perguntasCriadas--;
+            return false;
+        } else {
+            return false;
+        }
     }
     
     if(temRespostaIncorreta && temRespostaIncorreta2 && !temRespostaIncorreta3 && erroExtra !== 2) {
-        return;
+        if(qualPergunta.classList.contains("feito")) {
+            qualPergunta.classList.remove("feito");
+            perguntasCriadas--;
+            return false;
+        } else {
+            return false;
+        }
     }
     
     if(temRespostaIncorreta && temRespostaIncorreta2 && temRespostaIncorreta3 && erroExtra !== 0) {
-        return;
-    }
-
-    //adiciona os valores ao objeto
-    colocaNoObjeto(2);
-
-    //avança de página
-    document.querySelector(".tela-tres-perguntas-quizz").classList.add("escondido");
-    document.querySelector(".tela-tres-niveis-quizz").classList.remove("escondido");
-
-}
-
-//Botão da terceira página de criar quizz, prossegue de página para o quizz finalizado, computa os valores e envia o quizz para API (tela 3.3)
-function finalizarCriacaoQuizz() {
-    const titulo = document.querySelector(".tela-tres-niveis-quizz .titulo-nivel");
-    const acerto = document.querySelector(".tela-tres-niveis-quizz .porcentagem-acerto");
-    const urlNivel = document.querySelector(".tela-tres-niveis-quizz .url-imagem-nivel");
-    const descricao = document.querySelector(".tela-tres-niveis-quizz .descricao-nivel");
-
-    //pega os inputs
-    tituloNivel = titulo.value;
-    porcentagemAcerto = acerto.value;
-    urlImagemNivel = urlNivel.value;
-    descricaoNivel = descricao.value;
-
-    //verifica se as entradas são válidas
-    contemErro = 4;
-
-        //Retira os avisos
-    if(titulo.classList.contains("tem-erro")) {
-        titulo.classList.remove("tem-erro");
-        titulo.nextElementSibling.remove();
-    }
-    if(acerto.classList.contains("tem-erro")) {
-        acerto.classList.remove("tem-erro");
-        acerto.nextElementSibling.remove();
-    } 
-    if(urlNivel.classList.contains("tem-erro")) {
-        urlNivel.classList.remove("tem-erro");
-        urlNivel.nextElementSibling.remove();
-    } 
-    if(descricao.classList.contains("tem-erro")) {
-        descricao.classList.remove("tem-erro");
-        descricao.nextElementSibling.remove();
-    }
-
-        //confere erro no título
-    if(tituloNivel.length < 10) {
-        if(!titulo.classList.contains("tem-erro")){
-            titulo.classList.add("tem-erro");
-            titulo.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>O Título precisa ter mais de 10 caracteres</p></div>`);
-        } 
-    } else contemErro--;
- 
-        //confere erro na URL
-    let ehURL = urlCheck(urlImagemNivel);
-    if(!ehURL) {
-        if(!urlNivel.classList.contains("tem-erro")){
-            urlNivel.classList.add("tem-erro");
-            urlNivel.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>O valor informado não é uma URL válida</p></div>`);
+        if(qualPergunta.classList.contains("feito")) {
+            qualPergunta.classList.remove("feito");
+            perguntasCriadas--;
+            return false;
+        } else {
+            return false;
         }
-    } else contemErro--;
-
-        //confere erro nas perguntas
-    if(porcentagemAcerto < 0 || porcentagemAcerto > 100 || isNaN(porcentagemAcerto) || porcentagemAcerto === "") {
-        if(!acerto.classList.contains("tem-erro")){
-            acerto.classList.add("tem-erro");
-            acerto.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>A % de acerto precisa estar entre 0 e 100</p></div>`);
-        }
-    } else contemErro--;
-
-        //confere erro nos níveis
-    if(descricaoNivel.length < 30) {
-        if(!descricao.classList.contains("tem-erro")){
-            descricao.classList.add("tem-erro");
-            descricao.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>A descrição precisa ter no mínimo 30 caracteres</p></div>`);
-        }
-    } else contemErro--;
-
-    if(contemErro !== 0) {
-        return;
-    }
-    
-    //adiciona os valores ao objeto
-    colocaNoObjeto(3);
-
-    //confere porcentagem 0
-
-
-
-    //envia o quizz para API
-
-
-
-    //avança de página
-    document.querySelector(".tela-tres-niveis-quizz").classList.add("escondido");
-    document.querySelector(".tela-tres-sucesso-quizz").classList.remove("escondido");
-}
-
-//Botão da primeira página de criar quizz. Prossegue de página e computa os valores (tela 3.4)
-function AcessarQuizz() {
-
-}
-
-//Botão da primeira página de criar quizz. Prossegue de página e computa os valores (tela 3.4)
-function voltarHome() {
-    carregarPagina("home");
-}
-
-// Teste se a STRING é uma URL
-function urlCheck(str)
-{
-  regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-        if (regexp.test(str))
-        {
-          return true;
-        }
-        else
-        {
-          return false;
-        }
-}
-
-function colocaNoObjeto(parte) {
-    if(parte === 1) {
-        novoQuizz.title = tituloQuizz;
-        novoQuizz.image = urlImagemQuizz;
-        novoQuizz.questions = [];
-
-        for(let i = 0; i < qntPerguntasQuizz; i++) 
-        novoQuizz.questions.push({title:"",color:"",answers:[{}]});
     }
 
-    if(parte === 2) {
-        
-    }
+    //se tudo está correto adiciona a classe feito, caso não tenha, e retorna verdadeiro
+    if(qualPergunta.classList.contains("feito")) {
+        //adiciona os valores ao objeto
+        colocaNoObjeto(2);
 
-    if(parte === 3) {
-        
-    }
+        return true;
 
-    if(parte === 4) {
-        
+    } else {
+        qualPergunta.classList.add("feito");
+        perguntasCriadas++;
+
+        //adiciona os valores ao objeto
+        colocaNoObjeto(2);
+
+        return true;
     }
 }
 
-function selecionaPergunta(el) {
+function verificaNivel() {
 
-}
-
-function selecionaNivel(el) {
-    const selecionado = document.querySelector(".nivel-selecionado");
-
-    //retorna se o elemento clicado for o mesmo que já está selecionado
-    if(selecionado === el) {
-        return;
-    }
-
-    //
-}
+} 
