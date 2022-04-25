@@ -166,7 +166,7 @@
             <div class="tela-tres-perguntas-quizz escondido">
                 <div class="perguntas-quizz-topo"><h2>Crie suas perguntas</h2></div>
                 <div class="container-info-pergunta">
-                    <div class="organizador">
+                    <div class="organizador" id="p1" onclick="selecionaPergunta(this)">
                         <h3>Pergunta 1</h3>
                         <div class="pergunta-texto">
                             <input type="text" class="texto" placeholder="Texto da pergunta">
@@ -193,10 +193,10 @@
                         </div>
                     </div>    
                 </div>
-                <div class="perguntas-quizz-pergunta 2" onclick="selecionaPergunta(this)">
+                <div class="perguntas-quizz-pergunta" id="p2" onclick="selecionaPergunta(this)">
                     <h3>Pergunta 2</h3> <ion-icon name="create-outline"></ion-icon>
                 </div>
-                <div class="perguntas-quizz-pergunta 3" onclick="selecionaPergunta(this)">
+                <div class="perguntas-quizz-pergunta" id="p3" onclick="selecionaPergunta(this)">
                     <h3>Pergunta 3</h3> <ion-icon name="create-outline"></ion-icon>
                 </div>
                 <!-- <button onclick="prosseguirParaNiveis()">Prosseguir pra criar níveis</button> -->
@@ -204,7 +204,7 @@
             <div class="tela-tres-niveis-quizz escondido">
                 <div class="niveis-quizz-topo"><h2>Agora, decida os níveis!</h2></div>
                 <div class="niveis-quizz">
-                    <div class="nivel 1 nivel-selecionado" onclick="selecionaNivel(this)">
+                    <div class="nivel" id="n1" onclick="selecionaNivel(this)">
                         <div class="container-nivel">
                             <h3>Nível 1</h3>
                             <input type="text" class="titulo-nivel" placeholder="Título do nível">
@@ -213,7 +213,7 @@
                             <input type="text" class="descricao-nivel" placeholder="Descrição do nível">
                         </div>
                     </div>
-                    <div class="nivel-quizz 2" onclick="selecionaNivel(this)">
+                    <div class="nivel-quizz" id="n2" onclick="selecionaNivel(this)">
                         <h3>Nível 2</h3><ion-icon name="create-outline"></ion-icon>
                     </div>
                 </div>
