@@ -7,6 +7,8 @@ let perguntas;
 let niveis;
 let recarregar;
 let idQuizzCriado;
+let idsQuizzes = [];
+
 // Função que retorna pra home no logo
 function retornaHome(){
     document.location.reload(true)
@@ -123,7 +125,10 @@ function carregarFinalizacao(el) {
 }
 
 function renderizaFinalizacao(el) {
+    salvaLocal();
     const quizz = el.data;
+    console.log(el)
+    console.log(el.data)
     document.querySelector(".sucesso-quizz").innerHTML = `
     <div class="gradiente"><p>${quizz.title}?</p></div>
     <img src="${quizz.image}" alt="Imagem: ${quizz.title}"/>
@@ -178,3 +183,45 @@ function retiraRespostaVazia() {
     console.log(array + " acabou");
 }
 
+function salvaLocal() {
+    //Lista com os IDs dos Quizzes que você criou
+    let idLista = [];
+    const meuQuizz = idQuizzCriado;
+
+    //Cria/Atualiza a lista de IDs com seus quizz no LOCAL STORAGE
+    if(localStorage.getItem("ListaQuizz")) {
+        //Se a lista já existe:
+
+        //Pega a lista
+        let listaString = localStorage.getItem("ListaQuizz");
+        //Transforma em array
+        const lista = JSON.parse(listaString);
+        //Acrescenta o novo id
+        lista.push(meuQuizz);
+        //Salva a lista numa variável
+        idLista = lista;
+        //Converte a nova lista em string
+        listaString = JSON.stringify(lista);
+        //Salva no local storage
+        localStorage.setItem("ListaQuizz", lista);
+    } else {
+        //Se a lista não existe
+
+        //Salva o novo ID na lista
+        idLista.push(meuQuizz)
+        //Converte em String
+        const idListaString = JSON.stringify(idLista);
+        //Salva no local storage
+        localStorage.setItem("ListaQuizz", idLista);
+    }
+
+    //Guarda seu Quizz no local storage
+
+    //Transforma o Quizz de OBJETO para STRING
+    const quizzString = JSON.stringify(novoQuizz);
+    //Salva o novo quizz como STRING usando o buscador que é o seu ID
+    localStorage.setItem(idLista[idLista - 1], quizzString);
+
+    //Atualiza a variável global com todos os quizzes do local storage
+    idsQuizzes = idLista;
+}
