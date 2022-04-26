@@ -276,3 +276,32 @@ function salvaLocal() {
     //Atualiza a variável global com todos os quizzes do local storage
     idsQuizzes = idLista;
 }
+
+function edita() {
+
+}
+
+function apaga(ID) {
+    const deletar = axios.get(`${API}/${ID}`);
+    let quizzParaDeletar;
+    deletar.then(function(el){
+        quizzParaDeletar = el.data;
+    })
+    console.log(ID)
+    let dadosQuizz = localStorage.getItem(ID);
+    dadosQuizz = JSON.parse(dadosQuizz)
+    let confirmaDeletar = confirm(`Tem certeza que quer deletar o quizz ${dadosQuizz.title}`);
+
+    if(confirmaDeletar) {
+        let posicao = localStorage.getItem("ListaQuizz");
+        posicao = JSON.parse(posicao);
+        console.log(posicao);
+        posicao = posicao.indexOf(ID);
+        console.log(posicao);
+        let key = localStorage.getItem("Keys");
+        console.log(key);
+        key = JSON.parse(key);
+        console.log(key);
+        const deletando = axios.delete(`${API}/${ID}`,{headers: { "Secret-Key": key[posicao]}});
+    }
+}
