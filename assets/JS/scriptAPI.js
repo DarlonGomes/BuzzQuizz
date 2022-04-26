@@ -49,6 +49,7 @@ function renderizarQuizzes(el) {
         `;
     }
     if(localStorage.length == 0){
+        containerUsuario.innerHTML= ""
         containerUsuario.innerHTML += `
         <div class="container-usuario-vazio">
             <div class="quizz-usuario-vazio">
@@ -61,6 +62,7 @@ function renderizarQuizzes(el) {
     }
 
     if(localStorage.length != 0){
+        containerUsuario.innerHTML= ""
         containerUsuario.innerHTML += `
         <div class="usuario-localStorage">
             <div class="info-usuario ">
