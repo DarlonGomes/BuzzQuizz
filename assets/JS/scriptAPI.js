@@ -87,6 +87,9 @@ function renderizarQuizzes(el) {
     if(qualPagina === "home") {
         document.querySelector(".tela-um").classList.remove("escondido");
         document.querySelector(".carregando").classList.add("escondido");
+        if(document.querySelector(".tela-tres-sucesso-quizz")) {
+            document.querySelector(".tela-tres-sucesso-quizz").classList.add("escondido");
+        }
     }
 }
 
@@ -231,7 +234,7 @@ function salvaLocal() {
         //Pega a lista
         let listaString = localStorage.getItem("ListaQuizz");
         //Transforma em array
-        const lista = JSON.parse(listaString);
+        let lista = JSON.parse(listaString);
         //Acrescenta o novo id
         lista.push(meuQuizz);
         //Salva a lista numa variável
@@ -239,7 +242,7 @@ function salvaLocal() {
         //Converte a nova lista em string
         listaString = JSON.stringify(lista);
         //Salva no local storage
-        localStorage.setItem("ListaQuizz", lista);
+        localStorage.setItem("ListaQuizz", listaString);
     } else {
         //Se a lista não existe
 
@@ -248,7 +251,8 @@ function salvaLocal() {
         //Converte em String
         const idListaString = JSON.stringify(idLista);
         //Salva no local storage
-        localStorage.setItem("ListaQuizz", idLista);
+        localStorage.setItem("ListaQuizz", idListaString);
+        console.log(idLista)
     }
 
     //Guarda seu Quizz no local storage
@@ -256,7 +260,8 @@ function salvaLocal() {
     //Transforma o Quizz de OBJETO para STRING
     const quizzString = JSON.stringify(novoQuizz);
     //Salva o novo quizz como STRING usando o buscador que é o seu ID
-    localStorage.setItem(idLista[idLista - 1], quizzString);
+    const chave = idLista[idLista - 1]
+    localStorage.setItem(chave, quizzString);
 
     //Atualiza a variável global com todos os quizzes do local storage
     idsQuizzes = idLista;

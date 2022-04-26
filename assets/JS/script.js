@@ -234,6 +234,7 @@ function urlCheck(str)
         }
 }
 
+// Coloca os valores de cada sessão da criação de quizzez no objeto quizz
 function colocaNoObjeto(parte) {
     if(parte === 1) {
         novoQuizz.title = tituloQuizz;
@@ -290,6 +291,7 @@ function colocaNoObjeto(parte) {
     }
 }
 
+//botão troca entre os itens na seleção de perguntas de criação de quizzes
 function selecionaPergunta(el) {
     const selecionado = document.querySelector(".organizador");
     const novoId = Number(el.id.replace("p",""));
@@ -369,6 +371,7 @@ function selecionaPergunta(el) {
     el.removeAttribute("onclick");
 }
 
+//botão troca entre os itens na seleção de níveis de criação de quizzes
 function selecionaNivel(el) {
 
     const selecionado = document.querySelector(".nivel");
@@ -419,6 +422,7 @@ function selecionaNivel(el) {
     }
 }
 
+//função que verifica se as perguntas estão dentro do padrão para um quizz
 function verificaPergunta(id) {
     const texto = document.querySelector(".tela-tres-perguntas-quizz .texto");
     const corFundo = document.querySelector(".tela-tres-perguntas-quizz .cor-fundo");
@@ -644,6 +648,7 @@ function verificaPergunta(id) {
     }
 }
 
+//função que verifica se os níveis estão dentro do padrão para um quizz
 function verificaNivel(id) {
     const titulo = document.querySelector(".tela-tres-niveis-quizz .titulo-nivel");
     const acerto = document.querySelector(".tela-tres-niveis-quizz .porcentagem-acerto");
