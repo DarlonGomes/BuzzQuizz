@@ -945,8 +945,10 @@ font-size: 13px;
     margin: 0px;
 }
 .tela-tres-info-quizz .info-quizz-perguntas{
-    width: 375px;
+    width: 100%;
+    padding: 0 20px 20px 20px;
 }
+
 
 .tela-tres-info-quizz button{
     width: 323px;
@@ -1001,7 +1003,7 @@ font-size: 13px;
     flex-direction: column;
 }
 .tela-tres input{
-    width: 340px;
+    max-width: 340px;
     height: 46px;
     border: 1px solid #D1D1D1;
     box-sizing: border-box;
@@ -1021,11 +1023,11 @@ font-size: 13px;
 
 .tela-tres-perguntas-quizz .container-info-pergunta .pergunta-texto{
     width: 375px;
-    height: 106px;
+
 }
 .tela-tres-perguntas-quizz .container-info-pergunta .resposta-correta{
     width: 375px;
-    height: 106px;
+
 }
 .tela-tres-perguntas-quizz .container-info-pergunta .resposta-incorreta{
     width: 375px;
@@ -1042,10 +1044,23 @@ font-size: 13px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+}
+
+.tela-tres-niveis-quizz p{
+    margin: -2px 0 10px -18px;
+}
+
+.tela-tres-niveis-quizz input{
+    margin: 5px 0;
 }
 
 .tela-tres-niveis-quizz .container-nivel {
     width: 375px;
+}
+
+.tela-tres-niveis-quizz .container-nivel {
+    padding-top: 20px;
 }
 
 .tela-tres-niveis-quizz .nivel-quizz {
@@ -1099,5 +1114,8 @@ font-size: 13px;
 .gradiente p {
     font-size: 19px;
     margin: 0px 0px 15px 15px;
+}
+.escondido {
+    display: none;
 }
 }
