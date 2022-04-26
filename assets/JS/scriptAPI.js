@@ -110,11 +110,6 @@ function renderizarQuizzSelecionado (el) {
             `
         }
     }
-    for(let i = 0; i < niveis; i++) {
-        
-    }
-
-
     if(qualPagina === "tela-dois") {
         document.querySelector(".tela-dois").classList.remove("escondido");
         document.querySelector(".carregando").classList.add("escondido");
