@@ -100,7 +100,7 @@ function renderizarQuizzSelecionado (el) {
         `
     }
     for(let i = 0; i < perguntas; i++) {
-        const resposta = quizz.questions[i].answers
+        const resposta = embaralhar(quizz.questions[i].answers);
         for(let j = 0; j < resposta.length; j++) {
             document.querySelector(`.q${i}`).innerHTML += `
             <div class="resposta" onclick="validarResposta(this)">
@@ -140,3 +140,69 @@ function renderizaFinalizacao(el) {
     document.querySelector(".carregando").classList.add("escondido");
     document.querySelector(".tela-tres-sucesso-quizz").classList.remove("escondido");
 }
+
+function embaralhar(array) {
+    let ordemPadrao = array.length; 
+    let ordemAleatoria;
+  
+    // para quando acabar os elementos para embaralhar
+    while (ordemPadrao != 0) {
+  
+      // deixa aleatório
+      ordemAleatoria = Math.floor(Math.random() * ordemPadrao);
+      ordemPadrao--;
+  
+      [array[ordemPadrao], array[ordemAleatoria]] = [
+        array[ordemAleatoria], array[ordemPadrao]];
+    }
+  
+    return array;
+  }
+
+function retiraRespostaVazia() {
+    let array = [];
+
+    for(let i = 0; i < qntPerguntasQuizz; i++) {
+        array = novoQuizz.questions[i].answers;
+        let textoR3 = Boolean(array[2].text);
+        let imagemR3 = Boolean(array[2].image);
+        let textoR4 = Boolean(array[3].text);
+        let imagemR4 = Boolean(array[3].image);
+        let cortei = false;
+
+        if(!textoR3 || !imagemR3) {
+            array.splice(2, 1);
+            cortei = true
+            console.log(array + " tirei a resposta 3 da pergunta " + (i + 1));
+        }
+        if(cortei) {
+            if(!textoR4 || !imagemR4) {
+                array.splice(2, 1);
+                console.log(array + " TAMBEM tirei a resposta 4 da pergunta " + (i + 1));
+            }
+        } else if(!textoR4 || !imagemR4) {
+                array.splice(3, 1);
+                console.log(array + " SÓ tirei a resposta 4 da pergunta " + (i + 1));
+        }
+        
+    }
+    console.log(array + " acabou");
+}
+
+// var list = ["bar", "baz", "foo", "qux"];
+    
+//     list.splice(0, 2); 
+//     // Starting at index position 0, remove two elements ["bar", "baz"] and retains ["foo", "qux"].
+
+//     var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    
+//     for( var i = 0; i < arr.length; i++){ 
+    
+//         if ( arr[i] === 5) { 
+    
+//             arr.splice(i, 1); 
+//         }
+    
+//     }
+    
+//     //=> [1, 2, 3, 4, 6, 7, 8, 9, 0]

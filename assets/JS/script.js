@@ -203,6 +203,7 @@ function finalizarCriacaoQuizz() {
     }
 
     //envia o quizz para API
+    retiraRespostaVazia()
     enviaQuizz();
 
     //avança de página
@@ -516,7 +517,8 @@ function verificaPergunta(id) {
         } 
     } else contemErro--;
 
-    if(perguntaCorFundo.length !== 7 || perguntaCorFundo[0] !== "#") {
+    let testCor = /^#([0-9a-f]{3}){1,2}$/i;
+    if(perguntaCorFundo[0] !== "#" || !testCor.test(perguntaCorFundo)) {
         if(!corFundo.classList.contains("tem-erro")){
             corFundo.classList.add("tem-erro");
             corFundo.insertAdjacentHTML("afterend",`<div class="aviso-erro"><p>A cor começa com '#' e tem 6 caracteres em Hexadecimal</p></div>`);
