@@ -37,6 +37,7 @@ function carregarPagina(pagina) {
 //Renderiza os quizzes da COMUNIDADE
 function renderizarQuizzes(el) {
     const array = el.data;
+    console.log(el.data)
     const containerComunidade = document.querySelector(".container-comunidade");
     const containerUsuario = document.querySelector(".usuario");
     containerComunidade.innerHTML = "";
@@ -49,6 +50,7 @@ function renderizarQuizzes(el) {
         </div>
         `;
     }
+
     if(localStorage.length == 0){
         containerUsuario.innerHTML= ""
         containerUsuario.innerHTML += `
@@ -71,18 +73,28 @@ function renderizarQuizzes(el) {
                 <button onclick="criarQuizz()">+</button>
             </div>
             <div class="container-usuario ">
-                <div class="quizz-usuario">
-                    <p>Lucas é TOP</p>
-                </div>
-                <div class="quizz-usuario">
-                    <p>Lucas é TOP</p>
-                </div>
-                <div class="quizz-usuario">
-                    <p>Lucas é TOP</p>
-                </div>
             </div>
         </div>   
-            `
+        `;
+
+        //renderiza os quizzes
+        let quizz = localStorage.getItem("ListaQuizz");
+        quizz = JSON.parse(quizz);
+        for(let i = 0; i < quizz.length; i++) {
+
+            const quizzesDoUsuario = axios.get(`https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/${quizz[i]}`).then(response=>{
+            const image = response.data.image;
+            const title = response.data.title;
+            const id = response.data.id;
+            const meuquizz = document.querySelector(".container-usuario");
+            meuquizz.innerHTML += `
+                <div class="quizz-usuario" id="${id}" onclick="selecionarQuizz(this)" title="${title}">
+                    <img src=${image} alt="Imagem: ${title}">
+                    <p>${title}</p>
+                </div>
+            `;
+        })
+        }
     }
 
     if(qualPagina === "home") {
