@@ -328,7 +328,7 @@ function selecionaPergunta(el) {
         <h3>Pergunta ${novoId}</h3>
         <div class="pergunta-texto">
             <input type="text" class="texto" placeholder="Texto da pergunta">
-            <input type="text" class="cor-fundo" placeholder="Cor de fundo da pergunta">
+            <input type="color" class="cor-fundo" placeholder="Cor de fundo da pergunta">
         </div>
         <h3>Resposta correta</h3>
         <div class="resposta-correta">
@@ -405,7 +405,7 @@ function selecionaNivel(el) {
     <div class="container-nivel">
         <h3>Nível ${novoId}</h3>
         <input type="text" class="titulo-nivel" placeholder="Título do nível">
-        <input type="text" class="porcentagem-acerto" placeholder="% de acerto mínima">
+        <input type="number" class="porcentagem-acerto" placeholder="% de acerto mínima">
         <input type="text" class="url-imagem-nivel" placeholder="URL da imagem do nível">
         <input type="text" class="descricao-nivel" placeholder="Descrição do nível">
     </div>   

@@ -8,6 +8,7 @@ let niveis;
 let recarregar;
 let idQuizzCriado;
 let idsQuizzes = [];
+let keyQuizzCriado;
 
 // Função que retorna pra home no logo
 function retornaHome(){
@@ -165,6 +166,7 @@ function enviaQuizz() {
 
 function carregarFinalizacao(el) {
     idQuizzCriado = el.data.id;
+    keyQuizzCriado = el.data.key
     const promisse = axios.get(`${API}/${idQuizzCriado}`);
     promisse.then(renderizaFinalizacao);
 }
@@ -231,7 +233,7 @@ function retiraRespostaVazia() {
 function salvaLocal() {
     //Lista com os IDs dos Quizzes que você criou
     let idLista = [];
-    const meuQuizz = idQuizzCriado;
+    let keyLista = []
 
     //Cria/Atualiza a lista de IDs com seus quizz no LOCAL STORAGE
     if(localStorage.getItem("ListaQuizz")) {
@@ -239,25 +241,34 @@ function salvaLocal() {
 
         //Pega a lista
         let listaString = localStorage.getItem("ListaQuizz");
+        let keyString = localStorage.getItem("Keys");
         //Transforma em array
         let lista = JSON.parse(listaString);
+        let key = JSON.parse(keyString);
         //Acrescenta o novo id
-        lista.push(meuQuizz);
+        lista.push(idQuizzCriado);
+        key.push(keyQuizzCriado);
         //Salva a lista numa variável
         idLista = lista;
+        keyLista = key;
         //Converte a nova lista em string
         listaString = JSON.stringify(lista);
+        keyString = JSON.stringify(key);
         //Salva no local storage
         localStorage.setItem("ListaQuizz", listaString);
+        localStorage.setItem("Keys", keyString);
     } else {
         //Se a lista não existe
 
-        //Salva o novo ID na lista
-        idLista.push(meuQuizz)
+        //Salva o novo ID e KEY na lista
+        idLista.push(idQuizzCriado)
+        keyLista.push(keyQuizzCriado)
         //Converte em String
         const idListaString = JSON.stringify(idLista);
+        const keyListaString = JSON.stringify(keyLista);
         //Salva no local storage
         localStorage.setItem("ListaQuizz", idListaString);
+        localStorage.setItem("Keys", keyListaString);
         console.log(idLista)
     }
 
@@ -266,8 +277,37 @@ function salvaLocal() {
     //Transforma o Quizz de OBJETO para STRING
     const quizzString = JSON.stringify(novoQuizz);
     //Salva o novo quizz como STRING usando o buscador que é o seu ID
-    localStorage.setItem(meuQuizz, quizzString);
+    localStorage.setItem(idQuizzCriado, quizzString);
 
     //Atualiza a variável global com todos os quizzes do local storage
     idsQuizzes = idLista;
+}
+
+function edita() {
+
+}
+
+function apaga(ID) {
+    const deletar = axios.get(`${API}/${ID}`);
+    let quizzParaDeletar;
+    deletar.then(function(el){
+        quizzParaDeletar = el.data;
+    })
+    console.log(ID)
+    let dadosQuizz = localStorage.getItem(ID);
+    dadosQuizz = JSON.parse(dadosQuizz)
+    let confirmaDeletar = confirm(`Tem certeza que quer deletar o quizz ${dadosQuizz.title}`);
+
+    if(confirmaDeletar) {
+        let posicao = localStorage.getItem("ListaQuizz");
+        posicao = JSON.parse(posicao);
+        console.log(posicao);
+        posicao = posicao.indexOf(ID);
+        console.log(posicao);
+        let key = localStorage.getItem("Keys");
+        console.log(key);
+        key = JSON.parse(key);
+        console.log(key);
+        const deletando = axios.delete(`${API}/${ID}`,{headers: { "Secret-Key": key[posicao]}});
+    }
 }
