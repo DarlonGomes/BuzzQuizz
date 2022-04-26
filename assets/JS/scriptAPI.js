@@ -260,8 +260,7 @@ function salvaLocal() {
     //Transforma o Quizz de OBJETO para STRING
     const quizzString = JSON.stringify(novoQuizz);
     //Salva o novo quizz como STRING usando o buscador que é o seu ID
-    const chave = idLista[idLista - 1]
-    localStorage.setItem(chave, quizzString);
+    localStorage.setItem(meuQuizz, quizzString);
 
     //Atualiza a variável global com todos os quizzes do local storage
     idsQuizzes = idLista;
