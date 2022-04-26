@@ -40,6 +40,7 @@ function renderizarQuizzes(el) {
     console.log(el.data)
     const containerComunidade = document.querySelector(".container-comunidade");
     const containerUsuario = document.querySelector(".usuario");
+    const usuarioQuizz = document.querySelector(".container-usuario")
     containerComunidade.innerHTML = "";
     
     for(let i = 0; i < array.length; i++) {
@@ -96,6 +97,8 @@ function renderizarQuizzes(el) {
         })
         }
     }
+        
+    
 
     if(qualPagina === "home") {
         document.querySelector(".tela-um").classList.remove("escondido");
