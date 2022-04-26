@@ -225,3 +225,14 @@ function salvaLocal() {
     //Atualiza a variável global com todos os quizzes do local storage
     idsQuizzes = idLista;
 }
+
+function apagarQuizz(this) {
+    axios.delete(URL, {
+        headers: {
+          Authorization: authorizationToken
+        },
+        data: {
+          source: source
+        }
+      });
+}
