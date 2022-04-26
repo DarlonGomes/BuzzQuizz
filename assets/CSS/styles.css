@@ -338,7 +338,8 @@ color: #000000;
 text-align: center;
 }
 
-.container-questao .questao .resposta:hover{
+
+ .reagir:hover{
     cursor: pointer;
     opacity: 0.90;
 }

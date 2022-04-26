@@ -94,7 +94,7 @@ function renderizarQuizzSelecionado (el) {
         const resposta = embaralhar(quizz.questions[i].answers);
         for(let j = 0; j < resposta.length; j++) {
             document.querySelector(`.q${i}`).innerHTML += `
-            <div class="resposta" onclick="validarResposta(this)">
+            <div class="resposta reagir" onclick="validarResposta(this)">
                 <img src="${resposta[j].image}" id="${resposta[j].isCorrectAnswer}" alt="Imagem: ${resposta[j].text}"/>
                 <p>${resposta[j].text}</p>
             </div>
