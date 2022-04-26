@@ -38,6 +38,7 @@ function renderizarQuizzes(el) {
     const array = el.data;
     const containerComunidade = document.querySelector(".container-comunidade");
     const containerUsuario = document.querySelector(".usuario");
+    const usuarioQuizz = document.querySelector(".container-usuario")
     containerComunidade.innerHTML = "";
     
     for(let i = 0; i < array.length; i++) {
@@ -70,18 +71,17 @@ function renderizarQuizzes(el) {
                 <button onclick="criarQuizz()">+</button>
             </div>
             <div class="container-usuario ">
-                <div class="quizz-usuario">
-                    <p>Lucas é TOP</p>
-                </div>
-                <div class="quizz-usuario">
-                    <p>Lucas é TOP</p>
-                </div>
-                <div class="quizz-usuario">
-                    <p>Lucas é TOP</p>
-                </div>
+                
             </div>
         </div>   
             `
+        for(let i =0; i < localStorage.length; i++){
+            usuarioQuizz.innerHTML = `
+                <div class="quizz-usuario">
+                    <p>Lucas é TOP</p>
+                </div>
+            `
+        }
     }
 
     if(qualPagina === "home") {
