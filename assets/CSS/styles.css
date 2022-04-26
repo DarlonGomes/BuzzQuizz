@@ -620,7 +620,7 @@ text-align: center;
 }
 .tela-tres-niveis-quizz .container-nivel{
     width: 600px;
-    height: 316px;
+    min-height: 316px;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     display: flex;
@@ -1120,4 +1120,58 @@ font-size: 13px;
 .escondido {
     display: none;
 }
+}
+
+.quizz-usuario {
+    position: relative;
+
+}
+
+.quizz-usuario ion-icon{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 30px;
+    padding: 8px;
+    border-radius: 7px 0 0 7px;
+    background-color: red;
+    z-index: 2;
+}
+
+.quizz-usuario ion-icon:last-child{
+    top: 60px;
+}
+
+
+
+.descricao-nivel {
+    min-height: 200px;
+    text-align: start;
+    
+}
+
+
+.container-nivel input{
+    margin: 6px 0;
+}
+
+.descricao-nivel {
+    height: 190px;
+    word-break:break-all;
+    overflow-x: hidden;
+    text-overflow: clip;
+    font-size: 200px;
+    line-height: 40px;
+    row-gap: 2;
+}
+
+
+.container-nivel p {
+    margin: -2px 0 10px -18px;
+}
+
+.container-nivel h3{
+    margin: 20px 0 9px 0;
 }

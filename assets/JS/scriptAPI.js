@@ -9,6 +9,7 @@ let recarregar;
 let idQuizzCriado;
 let idsQuizzes = [];
 let keyQuizzCriado;
+let ahapagar = false;
 
 // Função que retorna pra home no logo
 function retornaHome(){
@@ -92,6 +93,8 @@ function renderizarQuizzes(el) {
                 <div class="quizz-usuario" id="${id}" onclick="selecionarQuizz(this)" title="${title}">
                     <img src=${image} alt="Imagem: ${title}">
                     <p>${title}</p>
+                    <ion-icon class="editar" name="create-outline" onclick="editar(${id})" role="img" aria-label="create outline"></ion-icon>
+                    <ion-icon class="deletar" name="trash-outline" onclick="apagar(${id})" role="img" aria-label="trash outline" title="Deletar"></ion-icon>
                 </div>
             `;
         })
@@ -110,6 +113,10 @@ function renderizarQuizzes(el) {
 }
 
 function selecionarQuizz(el) {
+    if(ahapagar) {
+        ahapagar = false;
+        return;
+    }
     idQuizz = el.id;
     qualPagina = "tela-dois";
     carregarQuizz();
@@ -290,11 +297,12 @@ function salvaLocal() {
 
 }
 
-function edita() {
+function editar() {
 
 }
 
-function apaga(ID) {
+function apagar(ID) {
+    ahapagar = true;
     const deletar = axios.get(`${API}/${ID}`);
     let quizzParaDeletar;
     deletar.then(function(el){

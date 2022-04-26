@@ -405,7 +405,7 @@ function selecionaNivel(el) {
     <div class="container-nivel">
         <h3>Nível ${novoId}</h3>
         <input type="text" class="titulo-nivel" placeholder="Título do nível">
-        <input type="number" class="porcentagem-acerto" placeholder="% de acerto mínima">
+        <input type="number" class="porcentagem-acerto" placeholder="% de acerto mínima" value="0">
         <input type="text" class="url-imagem-nivel" placeholder="URL da imagem do nível">
         <input type="text" class="descricao-nivel" placeholder="Descrição do nível">
     </div>   
