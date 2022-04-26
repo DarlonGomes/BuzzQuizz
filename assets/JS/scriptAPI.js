@@ -16,7 +16,7 @@ if(primeiroAcesso === 0) {
     primeiroAcesso = 1;
 }
 
-function carregarPagina (pagina) {
+function carregarPagina(pagina) {
     document.querySelector(".tela-um").classList.add("escondido");
     document.querySelector(".tela-dois").classList.add("escondido");
     document.querySelector(".tela-tres").classList.add("escondido");
@@ -29,7 +29,7 @@ function carregarPagina (pagina) {
 
 
 //Renderiza os quizzes da COMUNIDADE
-function renderizarQuizzes (el) {
+function renderizarQuizzes(el) {
     const array = el.data;
     const containerComunidade = document.querySelector(".container-comunidade");
     const containerUsuario = document.querySelector(".container-usuario");
@@ -64,7 +64,7 @@ function selecionarQuizz(el) {
     carregarQuizz();
 }
 
-function carregarQuizz () {
+function carregarQuizz() {
     document.querySelector(".tela-um").classList.add("escondido");
     document.querySelector(".tela-dois").classList.add("escondido");
     document.querySelector(".tela-tres").classList.add("escondido");
@@ -74,7 +74,7 @@ function carregarQuizz () {
     promisse.then(renderizarQuizzSelecionado);
 }
 
-function renderizarQuizzSelecionado (el) {
+function renderizarQuizzSelecionado(el) {
     const quizz = el.data;
     const containerQuizz = document.querySelector(".tela-dois");
     niveis = quizz.levels.length;
@@ -117,4 +117,29 @@ function renderizarQuizzSelecionado (el) {
         document.querySelector(".tela-dois").classList.remove("escondido");
         document.querySelector(".carregando").classList.add("escondido");
     }
+}
+
+function enviaQuizz() {
+    const promisse = axios.post(API, novoQuizz);
+
+    document.querySelector(".carregando").classList.remove("escondido");
+    document.querySelector(".tela-tres-niveis-quizz").classList.add("escondido");
+
+    promisse.then(carregarFinalizacao);
+}
+
+function carregarFinalizacao(el) {
+    const promisse = axios.get(`${API}/${el.data.id}`)
+    promisse.then(renderizaFinalizacao)
+}
+
+function renderizaFinalizacao(el) {
+    const quizz = el.data;
+    document.querySelector(".sucesso-quizz").innerHTML = `
+    <div class="gradiente"><p>${quizz.title}?</p></div>
+    <img src="${quizz.image}" alt="Imagem: ${quizz.title}"/>
+    `;
+
+    document.querySelector(".carregando").classList.add("escondido");
+    document.querySelector(".tela-tres-sucesso-quizz").classList.remove("escondido");
 }
