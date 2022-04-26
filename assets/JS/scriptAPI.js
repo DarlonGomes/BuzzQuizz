@@ -65,24 +65,30 @@ function renderizarQuizzes(el) {
     if(localStorage.length != 0){
         containerUsuario.innerHTML= ""
         containerUsuario.innerHTML += `
-        <div class="usuario-localStorage">
-            <div class="info-usuario ">
-                <h2>Seus Quizzes</h2> 
-                <button onclick="criarQuizz()">+</button>
-            </div>
-            <div class="container-usuario ">
-                
-            </div>
-        </div>   
-            `
-        for(let i =0; i < localStorage.length; i++){
-            usuarioQuizz.innerHTML = `
-                <div class="quizz-usuario">
-                    <p>Lucas é TOP</p>
+            <div class="usuario-localStorage">
+                <div class="info-usuario ">
+                    <h2>Seus Quizzes</h2> 
+                    <button onclick="criarQuizz()">+</button>
                 </div>
+                <div class="container-usuario ">
+                    
+                </div>
+            </div>   
             `
-        }
+            for(let j = 0; j < array.length; j++){
+                if (idsQuizzes.includes(array[j].id)){
+                usuarioQuizz.innerHTML= ""
+                usuarioQuizz.innerHTML += `
+                    <div class="quizz-usuario" id="${array[j].id}" onclick="selecionarQuizz(this)" title="${array[j].title}">
+                    <img src="${array[j].image} alt="Imagem do Quizz: ${array[j].title}">
+                        <p>${array[j].title}</p>
+                    </div>
+                    `
+                }
+            }
     }
+        
+    
 
     if(qualPagina === "home") {
         document.querySelector(".tela-um").classList.remove("escondido");
