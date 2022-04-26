@@ -5,6 +5,7 @@ let idQuizz = "";
 let primeiroAcesso = 0;
 let perguntas;
 let niveis;
+let recarregar;
 // Função que retorna pra home no logo
 function retornaHome(){
     document.location.reload(true)
@@ -74,10 +75,11 @@ function carregarQuizz() {
     promisse.then(renderizarQuizzSelecionado);
 }
 
-function renderizarQuizzSelecionado(el) {
+function renderizarQuizzSelecionado (el) {
+    recarregar = el;
     const quizz = el.data;
     const containerQuizz = document.querySelector(".tela-dois");
-    niveis = quizz.levels.length;
+    nivel = quizz.levels;
     perguntas = quizz.questions.length;
     
     console.log(quizz)
@@ -108,11 +110,6 @@ function renderizarQuizzSelecionado(el) {
             `
         }
     }
-    for(let i = 0; i < niveis; i++) {
-        
-    }
-
-
     if(qualPagina === "tela-dois") {
         document.querySelector(".tela-dois").classList.remove("escondido");
         document.querySelector(".carregando").classList.add("escondido");

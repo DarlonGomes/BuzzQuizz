@@ -98,6 +98,8 @@ main h3{
     height: 40px;
     background-color: #FAFAFA;
     border: 1px dashed #EC362D;
+    color: #EC362D;
+    font-size: 21px;
     border-radius: 50px;
 }
 
@@ -136,8 +138,6 @@ main h3{
 .container-usuario{
     width: 1100px;
     min-height: 181px;
-    max-height: 386px;
-    overflow-y: scroll;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
@@ -195,8 +195,6 @@ main h3{
 .container-comunidade{
     width: 1100px;
     min-height: 181px;
-    max-height: 589px;
-    overflow-y: scroll;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
@@ -281,7 +279,7 @@ main h3{
     width: 100%;
     height: 227px;
     z-index: -1;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 
@@ -315,6 +313,7 @@ main h3{
     font-weight: 700;
     font-size: 23px;
     color: #FFFFFF;
+    text-align: center;
 }
 
 .container-questao .questao .resposta{
@@ -328,7 +327,7 @@ justify-content: space-between;
 .container-questao .questao .resposta img{
     width: 323px;
     height: 175px;
-    object-fit: fill;
+    object-fit: cover;
     border-radius: 1px;
 }
 
@@ -336,6 +335,12 @@ justify-content: space-between;
 font-size: 20px;
 font-weight: 700;
 color: #000000;
+text-align: center;
+}
+
+.container-questao .questao .resposta:hover{
+    cursor: pointer;
+    opacity: 0.90;
 }
 
 .container-resultado{
@@ -360,6 +365,8 @@ color: #000000;
     font-weight: 700;
     font-size: 23px;
     color: #FFFFFF;
+    box-sizing: border-box;
+    text-align: center;
 }
 
 .container-resultado .descricao-resultado{
@@ -372,17 +379,21 @@ color: #000000;
 .container-resultado .descricao-resultado img{
     width: 364px;
     height: 273px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .container-resultado .descricao-resultado .texto{
     width: 328px;
     height: 250px;
     display: flex;
+    word-break:break-all;
     word-wrap: break-word;
     font-weight: 700;
     font-size: 19px;
     color: #484848;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
 }
 
 .tela-dois button{
@@ -396,6 +407,11 @@ color: #000000;
     font-size: 21px;
     text-align: center;
     color: #FFF5F4;
+}
+
+.tela-dois button:hover{
+    cursor: pointer;
+    opacity: 0.90;
 }
 
 .tela-dois .home button{
@@ -655,7 +671,7 @@ color: #000000;
 .tela-tres-sucesso-quizz img{
     width: 500px;
     height: 266px;
-    object-fit: fill;
+    object-fit: cover;
     border-radius: 5px;
     position: relative;
     margin-bottom: 45px;
@@ -764,7 +780,7 @@ color: #000000;
     color: #009C22;
 }
 
-@media (max-width: 600px){
+@media (max-width: 1100px){
     
 .container-usuario-vazio{
     width: 340px;
@@ -781,6 +797,12 @@ color: #000000;
 .container-comunidade{
     width: 340px;
     max-height: 772px;
+}
+
+.container-comunidade .quizz-comunidade{
+    width: 340px;
+    height: 181px;
+    margin-right: 0px;
 }
 
 .banner{
@@ -830,7 +852,7 @@ color: #000000;
 .container-questao .questao .resposta img{
     width: 163px;
     height: 113px;
-    object-fit: fill;
+    object-fit: cover;
     border-radius: 3px;
 }
 
@@ -877,7 +899,7 @@ font-size: 13px;
     width: 340px;
     height: 255px;
     margin-bottom: 6px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .container-resultado .descricao-resultado .texto{
