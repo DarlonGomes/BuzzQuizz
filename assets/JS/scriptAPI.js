@@ -29,6 +29,7 @@ function carregarPagina(pagina) {
     const promisse = axios.get(API);
     promisse.then(renderizarQuizzes);
     qualPagina = pagina;
+    
 }
 
 
@@ -36,7 +37,7 @@ function carregarPagina(pagina) {
 function renderizarQuizzes(el) {
     const array = el.data;
     const containerComunidade = document.querySelector(".container-comunidade");
-    const containerUsuario = document.querySelector(".container-usuario");
+    const containerUsuario = document.querySelector(".usuario");
     containerComunidade.innerHTML = "";
     
     for(let i = 0; i < array.length; i++) {
@@ -46,6 +47,41 @@ function renderizarQuizzes(el) {
             <p>${array[i].title}</p>
         </div>
         `;
+    }
+    if(localStorage.length == 0){
+        containerUsuario.innerHTML= ""
+        containerUsuario.innerHTML += `
+        <div class="container-usuario-vazio">
+            <div class="quizz-usuario-vazio">
+                <div class="vazio">
+                    <p>Você não criou nenhum quizz ainda :(</p>
+                    <button onclick="criarQuizz()">Criar Quizz</button>
+                </div>
+            </div>
+        </div>`
+    }
+
+    if(localStorage.length != 0){
+        containerUsuario.innerHTML= ""
+        containerUsuario.innerHTML += `
+        <div class="usuario-localStorage">
+            <div class="info-usuario ">
+                <h2>Seus Quizzes</h2> 
+                <button onclick="criarQuizz()">+</button>
+            </div>
+            <div class="container-usuario ">
+                <div class="quizz-usuario">
+                    <p>Lucas é TOP</p>
+                </div>
+                <div class="quizz-usuario">
+                    <p>Lucas é TOP</p>
+                </div>
+                <div class="quizz-usuario">
+                    <p>Lucas é TOP</p>
+                </div>
+            </div>
+        </div>   
+            `
     }
 
     if(qualPagina === "home") {
@@ -96,7 +132,7 @@ function renderizarQuizzSelecionado (el) {
         const resposta = embaralhar(quizz.questions[i].answers);
         for(let j = 0; j < resposta.length; j++) {
             document.querySelector(`.q${i}`).innerHTML += `
-            <div class="resposta" onclick="validarResposta(this)">
+            <div class="resposta reagir" onclick="validarResposta(this)">
                 <img src="${resposta[j].image}" id="${resposta[j].isCorrectAnswer}" alt="Imagem: ${resposta[j].text}"/>
                 <p>${resposta[j].text}</p>
             </div>

@@ -308,6 +308,7 @@ main h3{
     display: flex;
     justify-content: center;
     align-items: center;
+    word-wrap: break-word;
 }
 .container-questao .questao .pergunta h4{
     font-weight: 700;
@@ -322,6 +323,7 @@ height: 217px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+word-wrap: break-word;
 }
 
 .container-questao .questao .resposta img{
@@ -338,7 +340,8 @@ color: #000000;
 text-align: center;
 }
 
-.container-questao .questao .resposta:hover{
+
+ .reagir:hover{
     cursor: pointer;
     opacity: 0.90;
 }

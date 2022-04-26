@@ -8,7 +8,8 @@ function validarResposta(element){
     for(let i = 0; i < opcoes.length; i++){
         opcoes[i].removeAttribute("onclick")
         if(opcoes[i] !== element){
-            opcoes[i].classList.add("opaco") 
+            opcoes[i].classList.add("opaco")
+            opcoes[i].classList.remove("reagir")
         }
     }
     const acerto = element.querySelector("img")
