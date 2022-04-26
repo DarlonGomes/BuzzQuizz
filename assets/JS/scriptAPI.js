@@ -78,7 +78,6 @@ function renderizarQuizzes(el) {
             `
             for(let j = 0; j < array.length; j++){
                 if (idsQuizzes.includes(array[j].id)){
-                usuarioQuizz.innerHTML= ""
                 usuarioQuizz.innerHTML += `
                     <div class="quizz-usuario" id="${array[j].id}" onclick="selecionarQuizz(this)" title="${array[j].title}">
                     <img src="${array[j].image} alt="Imagem do Quizz: ${array[j].title}">
