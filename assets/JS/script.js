@@ -213,7 +213,9 @@ function finalizarCriacaoQuizz() {
 
 //Botão da primeira página de criar quizz. Prossegue de página e computa os valores (tela 3.4)
 function AcessarQuizz() {
-
+    idQuizz = idQuizzCriado;
+    qualPagina = "tela-dois";
+    carregarQuizz();
 }
 
 //Botão da primeira página de criar quizz. Prossegue de página e computa os valores (tela 3.4)

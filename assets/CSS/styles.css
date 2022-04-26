@@ -522,7 +522,7 @@ text-align: center;
 
 .tela-tres-perguntas-quizz .container-info-pergunta{
     width: 600px;
-    height: 825px;
+    min-height: 825px;
     background-color: #FFFFFF;
     box-sizing: border-box;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
@@ -530,6 +530,7 @@ text-align: center;
     justify-content: center;
     align-items: center;
     margin-bottom: 24px;
+    padding: 20px;
 }
 
 .tela-tres-perguntas-quizz .container-info-pergunta .organizador{
@@ -547,6 +548,14 @@ text-align: center;
     padding: 0 20px;
 }
 
+.tela-tres-perguntas-quizz p {
+    margin: -2px 0 10px -18px;
+}
+
+.tela-tres-perguntas-quizz input {
+    margin: 5px 0;
+}
+
 .tela-tres input::placeholder{
     font-style: italic;
     font-weight: 400;
@@ -557,7 +566,7 @@ text-align: center;
 
 .tela-tres-perguntas-quizz .container-info-pergunta .pergunta-texto{
     width: 564px;
-    height: 106px;
+    min-height: 106px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -566,7 +575,7 @@ text-align: center;
 }
 .tela-tres-perguntas-quizz .container-info-pergunta .resposta-correta{
     width: 564px;
-    height: 106px;
+    min-height: 106px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -575,7 +584,7 @@ text-align: center;
 }
 .tela-tres-perguntas-quizz .container-info-pergunta .resposta-incorreta{
     width: 564px;
-    height: 106px;
+    min-height: 106px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -982,7 +991,7 @@ font-size: 13px;
 
 .tela-tres-perguntas-quizz .container-info-pergunta{
     width: 375px;
-    height: 825px;
+    min-height: 825px;
     margin-bottom: 24px;
 }
 

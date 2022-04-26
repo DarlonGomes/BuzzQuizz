@@ -6,6 +6,7 @@ let primeiroAcesso = 0;
 let perguntas;
 let niveis;
 let recarregar;
+let idQuizzCriado;
 // Função que retorna pra home no logo
 function retornaHome(){
     document.location.reload(true)
@@ -34,23 +35,15 @@ function renderizarQuizzes(el) {
     const array = el.data;
     const containerComunidade = document.querySelector(".container-comunidade");
     const containerUsuario = document.querySelector(".container-usuario");
-
-    // console.log(array.length);
-    // console.log(el);
-    // console.log(el.data[1]);
-    // console.log(el.data[1].id);
-    // console.log(el.data[1].image);
-    // console.log(el.data[1].levels);
-    // console.log(el.data[1].questions);
-    // console.log(el.data[1].title);
-
+    containerComunidade.innerHTML = "";
+    
     for(let i = 0; i < array.length; i++) {
         containerComunidade.innerHTML += `
         <div class="quizz-comunidade" id="${array[i].id}" onclick="selecionarQuizz(this)" title="${array[i].title}">
             <img src="${array[i].image}" alt="Imagem do Quizz: ${array[i].title}">
             <p>${array[i].title}</p>
         </div>
-        `
+        `;
     }
 
     if(qualPagina === "home") {
@@ -81,15 +74,13 @@ function renderizarQuizzSelecionado (el) {
     const containerQuizz = document.querySelector(".tela-dois");
     nivel = quizz.levels;
     perguntas = quizz.questions.length;
-    
-    console.log(quizz)
 
     containerQuizz.innerHTML = `
     <div class="banner">
         <img src="${quizz.image}" alt="Imagem do Quizz: ${quizz.title}">
         <h3>${quizz.title}</h3>
     </div>
-    `
+    `;
     for(let i = 0; i < perguntas; i++) {
         containerQuizz.innerHTML += `
         <div class="container-questao">
@@ -97,7 +88,7 @@ function renderizarQuizzSelecionado (el) {
                 <div class="pergunta" style="background-color:${quizz.questions[i].color}"><h4>${quizz.questions[i].title}</h4></div>
             </div>
         </div>
-        `
+        `;
     }
     for(let i = 0; i < perguntas; i++) {
         const resposta = embaralhar(quizz.questions[i].answers);
@@ -107,7 +98,7 @@ function renderizarQuizzSelecionado (el) {
                 <img src="${resposta[j].image}" id="${resposta[j].isCorrectAnswer}" alt="Imagem: ${resposta[j].text}"/>
                 <p>${resposta[j].text}</p>
             </div>
-            `
+            `;
         }
     }
     if(qualPagina === "tela-dois") {
@@ -126,8 +117,9 @@ function enviaQuizz() {
 }
 
 function carregarFinalizacao(el) {
-    const promisse = axios.get(`${API}/${el.data.id}`)
-    promisse.then(renderizaFinalizacao)
+    idQuizzCriado = el.data.id;
+    const promisse = axios.get(`${API}/${idQuizzCriado}`);
+    promisse.then(renderizaFinalizacao);
 }
 
 function renderizaFinalizacao(el) {
@@ -172,37 +164,17 @@ function retiraRespostaVazia() {
 
         if(!textoR3 || !imagemR3) {
             array.splice(2, 1);
-            cortei = true
-            console.log(array + " tirei a resposta 3 da pergunta " + (i + 1));
+            cortei = true;
         }
         if(cortei) {
             if(!textoR4 || !imagemR4) {
                 array.splice(2, 1);
-                console.log(array + " TAMBEM tirei a resposta 4 da pergunta " + (i + 1));
             }
         } else if(!textoR4 || !imagemR4) {
                 array.splice(3, 1);
-                console.log(array + " SÓ tirei a resposta 4 da pergunta " + (i + 1));
         }
         
     }
     console.log(array + " acabou");
 }
 
-// var list = ["bar", "baz", "foo", "qux"];
-    
-//     list.splice(0, 2); 
-//     // Starting at index position 0, remove two elements ["bar", "baz"] and retains ["foo", "qux"].
-
-//     var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-    
-//     for( var i = 0; i < arr.length; i++){ 
-    
-//         if ( arr[i] === 5) { 
-    
-//             arr.splice(i, 1); 
-//         }
-    
-//     }
-    
-//     //=> [1, 2, 3, 4, 6, 7, 8, 9, 0]
