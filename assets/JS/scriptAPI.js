@@ -5,6 +5,7 @@ let idQuizz = "";
 let primeiroAcesso = 0;
 let perguntas;
 let niveis;
+let recarregar;
 // Função que retorna pra home no logo
 function retornaHome(){
     document.location.reload(true)
@@ -75,6 +76,7 @@ function carregarQuizz () {
 }
 
 function renderizarQuizzSelecionado (el) {
+    recarregar = el;
     const quizz = el.data;
     const containerQuizz = document.querySelector(".tela-dois");
     nivel = quizz.levels;

@@ -1,9 +1,10 @@
 let contadorReposta = 0;
 let contadorAcertos = 0;
 let porcentagem;
+let tela;
 function validarResposta(element){
     const opcoes = element.parentNode.querySelectorAll(".resposta")
-    const tela = element.parentNode
+    tela = element.parentNode
     for(let i = 0; i < opcoes.length; i++){
         opcoes[i].removeAttribute("onclick")
         if(opcoes[i] !== element){
@@ -32,20 +33,17 @@ contadorReposta += 1;
         exibirNivel()
     }
     scrollNext(tela)
-    
 }
-
-function scrollNext(elemento){
-    const tela = elemento;
-    const proximo = tela.parentNode.nextElementSibling;
-    setTimeout(function (){proximo.scrollIntoView({behavior: "smooth"})}, 2000);
-}
-
 function exibirNivel(){
     const promise = axios.get(`${API}/${idQuizz}`);
     promise.then(renderizarResultado);
 }
-
+function scrollNext(elemento){
+    const window = elemento;
+    const proximo = window.parentNode.nextElementSibling;
+    setTimeout(function (){proximo.scrollIntoView({behavior: "smooth"})}, 2000);
+    console.log(proximo)
+}
 function renderizarResultado(){
      porcentagem = (contadorAcertos / perguntas) * 100;
      const media = Math.ceil(porcentagem);
@@ -60,7 +58,7 @@ function renderizarResultado(){
     telaExibida.innerHTML += `
                 <div class="container-resultado">
                     <div class="resultado">
-                            <p>${nivel[j].title}</p>
+                            <p>${media}% de acerto: ${nivel[j].title}</p>
                     </div>
                     <div class="descricao-resultado">
                         <img src="${nivel[j].image}" alt=""/>
@@ -69,12 +67,21 @@ function renderizarResultado(){
                     </div>
                 </div>
                 </div>
-                <button>Reiniciar Quizz</button>
+                <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
                 <div class="home">
                     <button onclick="retornaHome()">Voltar pra home</button>
                 </div>
                 `
+                const final = document.querySelector(".container-resultado");
+                setTimeout(function (){final.scrollIntoView({behavior: "smooth"})}, 2000);
 }
     
-    
+function reiniciarQuizz(){
+    const topo = document.querySelector("header")
+    topo.scrollIntoView({behavior: "smooth"});
+    renderizarQuizzSelecionado(recarregar);
+    contadorAcertos = 0;
+    contadorReposta = 0;
+    media = 0;
+}
 
