@@ -77,7 +77,7 @@ function carregarQuizz () {
 function renderizarQuizzSelecionado (el) {
     const quizz = el.data;
     const containerQuizz = document.querySelector(".tela-dois");
-    niveis = quizz.levels.length;
+    nivel = quizz.levels;
     perguntas = quizz.questions.length;
     
     console.log(quizz)

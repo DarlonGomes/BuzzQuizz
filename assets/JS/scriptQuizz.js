@@ -1,5 +1,6 @@
 let contadorReposta = 0;
-
+let contadorAcertos = 0;
+let porcentagem;
 function validarResposta(element){
     const opcoes = element.parentNode.querySelectorAll(".resposta")
     const tela = element.parentNode
@@ -8,6 +9,10 @@ function validarResposta(element){
         if(opcoes[i] !== element){
             opcoes[i].classList.add("opaco") 
         }
+    }
+    const acerto = element.querySelector("img")
+    if(acerto.id == "true"){
+        contadorAcertos += 1
     }
     const validar = element.parentNode.querySelectorAll("img")
     const texto = element.parentNode.querySelector("p")
@@ -25,7 +30,6 @@ function validarResposta(element){
 contadorReposta += 1;
     if(perguntas == contadorReposta){
         exibirNivel()
-
     }
     scrollNext(tela)
     
@@ -42,24 +46,35 @@ function exibirNivel(){
     promise.then(renderizarResultado);
 }
 
-function renderizarResultado(promise){
-    const telaExibida = document.querySelector(".tela-dois");
+function renderizarResultado(){
+     porcentagem = (contadorAcertos / perguntas) * 100;
+     const media = Math.ceil(porcentagem);
+     const telaExibida = document.querySelector(".tela-dois");
+     const indice = [];
+    for (let i=0;i<nivel.length;i++){
+        if(media >= nivel[i].minValue){
+            indice.push(i)
+        }
+    }
+    let j = indice.length - 1;
     telaExibida.innerHTML += `
-    <div class="container-resultado">
-        <div class="resultado">
-                <p>${niveis.title}</p>
-        </div>
-        <div class="descricao-resultado">
-            <img src="${niveis.image}" alt=""/>
-            <div class="texto">
-                <p>${niveis.text}</p>
-        </div>
-    </div>
-    </div>
-    <button>Reiniciar Quizz</button>
-    <div class="home">
-        <button onclick="retornaHome()">Voltar pra home</button>
-    </div>
-    `
+                <div class="container-resultado">
+                    <div class="resultado">
+                            <p>${nivel[j].title}</p>
+                    </div>
+                    <div class="descricao-resultado">
+                        <img src="${nivel[j].image}" alt=""/>
+                        <div class="texto">
+                            <p>${nivel[j].text}</p>
+                    </div>
+                </div>
+                </div>
+                <button>Reiniciar Quizz</button>
+                <div class="home">
+                    <button onclick="retornaHome()">Voltar pra home</button>
+                </div>
+                `
 }
+    
+    
 
