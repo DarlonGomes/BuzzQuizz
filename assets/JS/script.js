@@ -206,9 +206,6 @@ function finalizarCriacaoQuizz() {
     retiraRespostaVazia()
     enviaQuizz();
 
-    //avança de página
-    //document.querySelector(".tela-tres-niveis-quizz").classList.add("escondido");
-    //document.querySelector(".tela-tres-sucesso-quizz").classList.remove("escondido");
 }
 
 //Botão da primeira página de criar quizz. Prossegue de página e computa os valores (tela 3.4)
@@ -281,16 +278,6 @@ function colocaNoObjeto(parte) {
     }
 
     if(parte === 3) {
-    //confere se o array das respostas está definido ou não
-    //const jahPreenchido = novoQuizz.levels[numIdNivel - 1].answers[0];
-
-    //caso não esteja faz o push com a quantidade de respostas
-    //if(typeof(jahPreenchido) === "undefined") {
-    //    for(let i = 0; i < qntNiveisQuizz; i++) {
-    //        novoQuizz.questions[numIdPergunta - 1].answers.push({text:"",image:"",isCorrectAnswer:""});
-    //    }
-    //}
-
     //atribui os valores
     novoQuizz.levels[numIdNivel - 1].title = tituloNivel;
     novoQuizz.levels[numIdNivel - 1].image = urlImagemNivel;
@@ -405,8 +392,6 @@ function selecionaNivel(el) {
     //Arruma o layout para preencher os inputs do item selecionado
     selecionado.classList.add("nivel-quizz");
     selecionado.classList.add("feito");
-    //selecionado.setAttribute("id", selecionado.id);
-    //selecionado.setAttribute("onclick", "selecionaPergunta(this)");
     selecionado.classList.remove("nivel");
     selecionado.innerHTML = `
     <h3>Nível ${numIdNivel}</h3><ion-icon name="create-outline"></ion-icon>
@@ -425,16 +410,13 @@ function selecionaNivel(el) {
     el.classList.add("nivel");
     el.classList.remove("nivel-quizz");
 
-    if(el.classList.contains("feito")) { //essa parte da pra melhorar entrando com input
-        el.classList.remove("feito"); //
+    if(el.classList.contains("feito")) { 
+        el.classList.remove("feito"); 
         el.querySelector(".titulo-nivel").value = novoQuizz.levels[novoId - 1].title;
         el.querySelector(".url-imagem-nivel").value = novoQuizz.levels[novoId - 1].image;
         el.querySelector(".descricao-nivel").value = novoQuizz.levels[novoId - 1].text;
         el.querySelector(".porcentagem-acerto").value = novoQuizz.levels[novoId - 1].minValue;
     }
-
-    // el.removeAttribute("id");
-    // el.removeAttribute("onclick");
 }
 
 function verificaPergunta(id) {
@@ -779,3 +761,4 @@ function verificaNivel(id) {
             return true;
         }
 } 
+
